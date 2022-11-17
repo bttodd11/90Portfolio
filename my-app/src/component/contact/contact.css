@@ -1,0 +1,66 @@
+#contactSection {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  margin-bottom: 6%;
+  text-align: center;
+}
+.subject {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contactTitle {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 10px;
+  text-decoration: underline;
+  margin-bottom: 10%;
+}
+.small {
+  width: 40%;
+  font-size: 8px;
+  font-family: "Press Start 2P", cursive;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  #contactSection {
+    margin-top: 5%;
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form-control {
+    font-size: 11px;
+    padding: 2% 0 2% 0%;
+    letter-spacing: 3px;
+  }
+  .contactTitle {
+    font-family: "Press Start 2P", cursive;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 10px;
+    text-decoration: underline;
+    margin-bottom: 5%;
+  }
+  .small {
+    width: 20%;
+    font-size: 10px;
+    font-family: "Press Start 2P", cursive;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
