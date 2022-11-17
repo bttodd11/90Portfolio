@@ -3,12 +3,46 @@ import "./contact.css";
 
 let Contact = () => {
 
-  let [firstNameField, setFirstNameField] = useState("First Name");
-  let [lastNameField, setLastNameField ] = useState("Last Name")
+  let [firstNameField, setFirstNameField] = useState("");
+  let [lastNameField, setLastNameField ] = useState("")
   let [emailAddressField, setEmailAddress ] = useState("");
-  let [messageField, setMessageField ] = useState("Message");
+  let [messageField, setMessageField ] = useState("");
+
+
+  let validateEmail = (email) => {
+
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if(email.match(mailformat)){
+    } else {
+        alert("Please enter a valid email address")
+    }
+
+  }
+
+
 
   let sendEmail = () => {
+
+    validateEmail(emailAddressField)
+
+    if(firstNameField.length <= 0){
+      alert("Please enter first name")
+      return
+    }
+    if(lastNameField.length <= 0){
+      alert("Please enter last name")
+      return
+    }
+    if(emailAddressField.length <= 0){
+      alert("Please enter email address")
+      return
+    }
+    if(messageField.length <= 0){
+      alert("Please enter message")
+      return
+    }
+
 
     window.Email.send({
       SecureToken: "fe7a8d59-9f6a-4f27-a6c1-ea9394aa8d34",
