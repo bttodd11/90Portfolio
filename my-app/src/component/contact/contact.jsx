@@ -14,31 +14,27 @@ let Contact = () => {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if(email.match(mailformat)){
+      return true
     } else {
-        alert("Please enter a valid email address")
-    }
-
+        return false
+      }
   }
-
-
 
   let sendEmail = () => {
 
-    validateEmail(emailAddressField)
-
-    if(firstNameField.length <= 0){
+    if (firstNameField.length <= 0) {
       alert("Please enter first name")
       return
     }
-    if(lastNameField.length <= 0){
+    if (lastNameField.length <= 0) {
       alert("Please enter last name")
       return
     }
-    if(emailAddressField.length <= 0){
-      alert("Please enter email address")
-      return
+    if (!validateEmail(emailAddressField)) {
+      alert("Please enter valid email address")
+      return;
     }
-    if(messageField.length <= 0){
+    if (messageField.length <= 0) {
       alert("Please enter message")
       return
     }
