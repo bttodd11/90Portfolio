@@ -23,6 +23,15 @@
   letter-spacing: 10px;
   text-decoration: underline;
   margin-bottom: 10%;
+  text-shadow:
+  0 0 2px #fff,
+  0 0 2px #fff,
+  0 0 21px #fff,
+  0 0 42px #fff,
+  0 0 8px #fff,
+  0 0 92px #FFC107,
+  0 0 10px #FFC107,
+  0 0 15px #FFC107;
 }
 .small {
   width: 40%;
@@ -36,7 +45,7 @@
 /* Desktop */
 @media (min-width: 992px) {
   #contactSection {
-    margin-top: 5%;
+    margin-top: 10%;
     width: 60%;
     text-align: center;
     margin-left: auto;

@@ -25,10 +25,6 @@ let skills = () => {
           </div>
         </div>
       </div>
-      <div className="contributionsTable">
-        <h2 className="contributionTitle">Improvements</h2>
-        <img src="https://ghchart.rshah.org/bttodd11" alt="Brian's Github Chart" className="contributionChart" />
-      </div>
 
     </div>
   )

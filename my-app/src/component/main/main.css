@@ -23,7 +23,6 @@
 
 .arrow {
     font-size: 20px;
-    padding-right: 10px;
     animation: blinker 1.5s linear infinite;
 }
 
@@ -43,7 +42,9 @@
         height: 70%;
         margin: 5%;
     }
-
+    .myName {
+        font-size: 30px
+    }
     .imageDiv {
         text-align: left;
     }
@@ -55,8 +56,7 @@
     }
 
     .name {
-        text-align: left;
-        padding: 0;
+        margin-left: -39px;
     }
 
 }

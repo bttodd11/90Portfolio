@@ -9,6 +9,15 @@
   font-size: 28px;
   letter-spacing: 2px;
   text-decoration: underline;
+  text-shadow:
+  0 0 2px #fff,
+  0 0 2px #fff,
+  0 0 21px #fff,
+  0 0 42px #fff,
+  0 0 8px #fff,
+  0 0 92px #FFC107,
+  0 0 10px #FFC107,
+  0 0 15px #FFC107;
 }
 .skillList {
   color: white;
@@ -32,6 +41,7 @@
   font-size: 13px;
   display: block;
   width: 100%;
+  margin-top: 10%;
 }
 .contributionChart {
   background-color: white;
@@ -43,9 +53,10 @@
   font-family: "Press Start 2P", cursive;
   color: white;
   text-align: center;
-  font-size: 20px;
+  font-size: 28px;
   padding: 4% 5%;
   letter-spacing: 10px;
+  text-decoration: underline;
 }
 
 /* Desktop */

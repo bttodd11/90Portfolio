@@ -2,6 +2,7 @@ import Preloader from './component/preloader/preloader';
 import Main from './component/main/main';
 import Skills from './component/skills/skills';
 import Contact from './component/contact/contact';
+import Links from './component/nav/nav';
 
 
 import './App.css';
@@ -14,6 +15,7 @@ function App() {
           <Preloader/>
           </div>
           <div className='mainDiv'>
+          <Links />
         <Main />
         <Skills />
         <Contact />

@@ -15,7 +15,7 @@ const Main = () => {
           </div>
           <div class="col-sm-12 col-md-6 col-lg-6">
         <div className="infoDiv">
-          <p className="name"> <span className="arrow">&#10148;</span> Player: <span> Brian Todd</span></p>
+          <p className="name"> <span className="arrow">&#10148;</span> Player: <span className="myName"> Brian Todd</span></p>
           <p>Location: <span> South Austin,Texas</span></p>
           <p>Occupation: <span> Software Engineer</span></p>
           <p>Experience: <span> 7 yrs</span></p>
