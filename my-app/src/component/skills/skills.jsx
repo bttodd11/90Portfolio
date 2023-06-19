@@ -5,7 +5,7 @@ import "./skills.css";
 let skills = () => {
 
   return (
-    <div className="skillSection">
+    <div id="skillSection">
       <h2 className="skillTitle">Tech Savvy</h2>
       <div class="container-fluid">
         <div class="row">

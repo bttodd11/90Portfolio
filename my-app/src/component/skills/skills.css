@@ -1,23 +1,14 @@
-.skillSection {
+#skillSection {
   width: 100%;
 }
 .skillTitle {
   font-family: "Press Start 2P", cursive;
-  color: white;
   text-align: center;
   padding: 15% 10%;
   font-size: 28px;
   letter-spacing: 2px;
   text-decoration: underline;
-  text-shadow:
-  0 0 2px #fff,
-  0 0 2px #fff,
-  0 0 21px #fff,
-  0 0 42px #fff,
-  0 0 8px #fff,
-  0 0 92px #FFC107,
-  0 0 10px #FFC107,
-  0 0 15px #FFC107;
+  color: #FFC107;
 }
 .skillList {
   color: white;
@@ -32,31 +23,8 @@
   letter-spacing: 10px;
   padding: 4% 5%;
 }
-.skillSection p {
+#skillSection p {
   font-size: 12px;
-}
-.contributionsTable {
-  background-color: black;
-  text-align: center;
-  font-size: 13px;
-  display: block;
-  width: 100%;
-  margin-top: 10%;
-}
-.contributionChart {
-  background-color: white;
-  text-align: center;
-  width: 90vw;
-  padding: 1%;
-}
-.contributionTitle {
-  font-family: "Press Start 2P", cursive;
-  color: white;
-  text-align: center;
-  font-size: 28px;
-  padding: 4% 5%;
-  letter-spacing: 10px;
-  text-decoration: underline;
 }
 
 /* Desktop */
@@ -74,7 +42,7 @@
   .skillHeader {
     letter-spacing: 15px;
   }
-  .skillSection p {
+  #skillSection p {
     font-size: 12px;
   }
   .contributionChart {

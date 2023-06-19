@@ -33,7 +33,7 @@
   margin-top: 25%;
   margin-bottom: 60%;
   letter-spacing: 10px;
-  font-family: 'Henny Penny', cursive;
+  font-family: 'Moirai One', cursive;
   display: block;
   height: 10%;
   color: #ffc107;
@@ -93,7 +93,6 @@ animation: blink
 
   .titleText {
     font-size: 80px;
-    font-family: 'Henny Penny', cursive;
     letter-spacing: 30px;
     margin-top: 8%;
     margin-bottom: 18%;

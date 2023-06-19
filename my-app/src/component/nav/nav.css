@@ -1,4 +1,48 @@
 .navSection {
     background-color: black;
     font-family: "Press Start 2P", cursive;
+    padding-bottom: 5%;
+}
+a {
+    text-decoration: none;
+    color: #FFC107;
+    font-size: 13px
+    ;
+}
+.nav-item{
+    color: #FFC107 !important;
+    margin: 2% 4%;
+}
+
+
+/* Desktop */
+@media (min-width: 992px) {
+.navSection {
+    background-color: black;
+    font-family: "Press Start 2P", cursive;
+    padding-bottom: 5%;
+}
+a {
+    text-decoration: none;
+    color: #FFC107;
+    font-size: 20px
+}
+a:hover {
+    color: white;
+    text-shadow:
+    0 0 5px #fff,
+    0 0 5px #fff,
+    0 0 10px #fff,
+}
+.nav-item{
+    color: #FFC107 !important;
+    text-shadow:
+     0 0 5px #fff,
+     0 0 5px #fff,
+     0 0 10px #fff,
+}
+.nav-item:visited {
+    color: #FFC107;
+
+}
 }

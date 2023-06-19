@@ -1,21 +1,23 @@
 import "./nav.css";
 import React from "react";
 import Nav from 'react-bootstrap/Nav';
+import { HashLink } from 'react-router-hash-link';
+
 
 
 const links = () => {
 
   return (
   <div className="navSection">
-      <Nav defaultActiveKey="/home" as="ul" className="justify-content-center">
-      <Nav.Item as="li">
-        <Nav.Link href="/home">Tech</Nav.Link>
+      <Nav className="justify-content-center navLinks">
+      <Nav.Item>
+      <a className="navLink"><HashLink smooth to="#skillSection">Tech</HashLink></a>
       </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-1">Photography</Nav.Link>
+      <Nav.Item>
+      <a className="navLink" href="https://bttodd.myportfolio.com/" target="_blank">Photography</a>
       </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-2">Contact</Nav.Link>
+      <Nav.Item>
+      <a className="navLink"><HashLink smooth to="#contactSection">Contact</HashLink></a>
       </Nav.Item>
     </Nav>
 </div>
