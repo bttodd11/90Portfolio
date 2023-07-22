@@ -14,6 +14,9 @@ const links = () => {
       <a className="navLink"><HashLink smooth to="#skillSection">Tech</HashLink></a>
       </Nav.Item>
       <Nav.Item>
+      <a className="navLink"><HashLink smooth to="#statSection">Stats</HashLink></a>
+      </Nav.Item>
+      <Nav.Item>
       <a className="navLink" href="https://bttodd.myportfolio.com/" target="_blank">Photography</a>
       </Nav.Item>
       <Nav.Item>

@@ -3,6 +3,7 @@ import Main from './component/main/main';
 import Skills from './component/skills/skills';
 import Contact from './component/contact/contact';
 import Links from './component/nav/nav';
+import Stats from './component/stats/stats';
 
 
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
           <Links />
         <Main />
         <Skills />
+        <Stats />
         <Contact />
         </div>
     </div>
