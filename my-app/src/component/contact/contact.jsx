@@ -53,19 +53,19 @@ let Contact = () => {
 
   return (
     <div id="contactSection">
-      <div class="container-fluid">
-        <body class="p-3 m-0 border-0 row">
+      <div className="container-fluid">
+        <div className="p-3 m-0 border-0 row">
           <p className="contactTitle">Connect</p>
-          <div class="col-md-4 col-sm-12">
-            <input type="email" class="form-control firstName" onChange={(e) => setFirstNameField(e.target.value)} placeholder="First Name"></input>
-            <input type="email" class="form-control lastName" onChange={(e) => setLastNameField(e.target.value)} placeholder="Last Name"></input>
-            <input type="email" class="form-control emailAddress" onChange={(e) => setEmailAddress(e.target.value)} placeholder="Email Address"></input>
+          <div className="col-md-4 col-sm-12">
+            <input type="email" className="form-control firstName" onChange={(e) => setFirstNameField(e.target.value)} placeholder="First Name"></input>
+            <input type="email" className="form-control lastName" onChange={(e) => setLastNameField(e.target.value)} placeholder="Last Name"></input>
+            <input type="email" className="form-control emailAddress" onChange={(e) => setEmailAddress(e.target.value)} placeholder="Email Address"></input>
           </div>
-          <div class="col-md-8 col-sm-12">
-            <textarea class="form-control message" id="exampleFormControlTextarea1" onChange={(e) => setMessageField(e.target.value)} placeholder="Enter Message" rows="6"></textarea>
+          <div className="col-md-8 col-sm-12">
+            <textarea className="form-control message" id="exampleFormControlTextarea1" onChange={(e) => setMessageField(e.target.value)} placeholder="Enter Message" rows="6"></textarea>
           </div>
-          <button type="button" class="btn btn-warning small" onClick={() => sendEmail()}>Send Message</button>
-        </body>
+          <button type="button" className="btn btn-warning small" onClick={() => sendEmail()}>Send Message</button>
+        </div>
       </div>
     </div>
   )

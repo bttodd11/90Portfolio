@@ -1,7 +1,13 @@
-#statlSection {
+#statSection {
     width: 100%;
   }
-  .statTitle {
+.statBackground {
+  background-color: white;
+  width: 70%;
+  text-align: center;
+  border-radius: 0.375rem;
+}
+.statTitle {
     font-family: "Press Start 2P", cursive;
     text-align: center;
     padding: 15% 10%;
@@ -9,7 +15,11 @@
     letter-spacing: 2px;
     text-decoration: underline;
     color: #FFC107;
-  }
+ }
+
+ .statText {
+    font-size: 10px;
+ }
 
   
   /* Desktop */
