@@ -76,7 +76,8 @@ let Stats = () => {
           </Col>
           <Col className="col-sm-12 col-md-6 col-lg-6">
             <a href={githubLink}><p className="statText">Github Link</p></a>
-            <p className="statText">Number of Repos :</p>
+            <p className="statText">Number of Commites for this Portfolio : {numberOfCommitsgit add .
+}</p>
           </Col>
        </Row>
   
