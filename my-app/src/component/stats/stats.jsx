@@ -1,10 +1,11 @@
 import { React, useEffect, useState } from "react";
-import { Octokit } from "https://esm.sh/octokit?dts";
+import Octokit from "@octokit/rest";
 import "./stats.css";
 
 
 let Stats = () => {
 
+  const { Octokit } = require("@octokit/rest");
   let [repos, setRepos] = useState(0)
   let [language, setLanguage] = useState('')
   let [githubLink, setGithubLink ] = useState('')
