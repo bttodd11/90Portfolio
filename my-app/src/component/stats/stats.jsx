@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from "react";
 import { Octokit } from "https://esm.sh/octokit?dts";
-import {Col, Row} from 'react-bootstrap';
 import "./stats.css";
 
 
@@ -69,21 +68,19 @@ let Stats = () => {
     <div id="statSection">
       <h2 className="statTitle">Github Stats</h2>
       <div className="container-fluid statBackground">
-        <Row>
-          <Col className="col-sm-12 col-md-6 col-lg-6">
-            <p className="statText">Number of Repos : <span>{repos}</span></p>
-            <p className="statText">Most Commonly Used Language : <span>{language}</span></p>
-          </Col>
-          <Col className="col-sm-12 col-md-6 col-lg-6">
+        <div className="row statBox">
+            <div className="col-md-6 col-sm-12">
+            <p className="statText">Repos: <span>{repos}</span></p>
+            <p className="statText">Favorite Language: <span>{language}</span></p>
+            </div>
+            <div className="col-md-6 col-sm-12 ">
             <a href={githubLink}><p className="statText">Github Link</p></a>
-            <p className="statText">Number of Commites for this Portfolio : {numberOfCommits}</p>
-          </Col>
-       </Row>
-  
+            <p className="statText">Commits for this Portfolio : {numberOfCommits}</p>
+            </div>
+          </div>
       </div>
-    </div>
+      </div>
   )
-
 }
 
 export default Stats;
