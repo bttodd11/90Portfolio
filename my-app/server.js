@@ -11,16 +11,39 @@ const octokit = new Octokit({ auth: octoId });
 
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
 
-    let repos =  octokit.request('GET /users/bttodd11/repos?per_page=100', {
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    })
+   const repoOptions = {
+        method: 'GET',
+        url: ' https://api.github.com/users/bttodd11/repos?per_page=100',
+        headers: {
+            'X-GitHub-Api-Version': '2022-11-28',
+            'Authorization': octoId 
+          }
+   }
 
-    axios.request(repos).then((response) => {
-        console.log(response)
+   const userOptions = {
+        method: 'GET',
+        url: 'https://api.github.com/users/bttodd11/',
+        headers: {
+            'X-GitHub-Api-Version': '2022-11-28',
+            'Authorization': octoId 
+          }
+
+   }
+
+   const lastYearCommitOptions = {
+        method: 'GET',
+        url: 'https://api.github.com/repos/bttodd11/90Portfolio/stats/contributors',
+        headers: {
+            'X-GitHub-Api-Version': '2022-11-28',
+            'Authorization': octoId 
+          }
+   }
+
+
+    axios.request(options.url).then((response) => {
+        console.log(response.data.length)
     })
 })
 
