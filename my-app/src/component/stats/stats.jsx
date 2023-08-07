@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import Octokit from "@octokit/rest";
+import axios from "axios";
 import "./stats.css";
 
 
@@ -14,55 +15,72 @@ let Stats = () => {
 
   let octoId = process.env.REACT_APP_USER_PASSWORD;
 
-  const octokit = new Octokit({ auth: octoId });
+  // const octokit = new Octokit({ auth: octoId });
 
   let getRepo = async () => {
 
-    let repos = await octokit.request('GET /users/bttodd11/repos?per_page=100', {
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    })
+    // let repos = await octokit.request('GET /users/bttodd11/repos?per_page=100', {
+    //   headers: {
+    //     'X-GitHub-Api-Version': '2022-11-28'
+    //   }
+    // })
 
-    let user = await octokit.request('GET /user', {
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    })
+    // let user = await octokit.request('GET /user', {
+    //   headers: {
+    //     'X-GitHub-Api-Version': '2022-11-28'
+    //   }
+    // })
 
-    let lastYearCommits = await octokit.request('GET /repos/bttodd11/90Portfolio/stats/contributors', {
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    })
+    // let lastYearCommits = await octokit.request('GET /repos/bttodd11/90Portfolio/stats/contributors', {
+    //   headers: {
+    //     'X-GitHub-Api-Version': '2022-11-28'
+    //   }
+    // })
+
+  //   const options = {
+  //     method: 'GET',
+  //     url: "http://localhost:5000",
+  //   }
+  //   axios.request(options)
+  //   .then(function (response) {
+  //     console.log(response)
+  //       // setData(response.data.data)
+  //   })
+  //   .catch(function (error) {
+  //       console.error(error);
+  //   })  
+  // }
+
 
     // Finding the most commonly used languages 
-    for(let index = 0; index < repos.data.length; index++){
+    // for(let index = 0; index < repos.data.length; index++){
 
-      let currentLanguage = repos.data[index].language;
+    //   let currentLanguage = repos.data[index].language;
 
-      if(languageMap[currentLanguage]){
-        languageMap[currentLanguage] += 1
-      }  else {
-        languageMap[currentLanguage] = 1
-      }
-    }
+    //   if(languageMap[currentLanguage]){
+    //     languageMap[currentLanguage] += 1
+    //   }  else {
+    //     languageMap[currentLanguage] = 1
+    //   }
+    // }
 
     // Setting Last Year Commits 
-    setNumberOfCommits(lastYearCommits.data[0].total)
+    // setNumberOfCommits(lastYearCommits.data[0].total)
 
     // Setting Github URL
-    setGithubLink(user.data.html_url)
+    // setGithubLink(user.data.html_url)
 
     // Find the lannguage of each repo and create a hashMap
-   let highValue = Object.values(languageMap).sort(function(a,b){return b - a});
-   setLanguage(Object.keys(languageMap).filter(function(key) {return languageMap[key] === highValue[0]})[0]);
-   setRepos(repos.data.length)
-  }
+  //  let highValue = Object.values(languageMap).sort(function(a,b){return b - a});
+  //  setLanguage(Object.keys(languageMap).filter(function(key) {return languageMap[key] === highValue[0]})[0]);
+  //  setRepos(repos.data.length)
 
+  }
+  
   useEffect(() => {
     getRepo()
   }, [])
+
 
 
   return (
