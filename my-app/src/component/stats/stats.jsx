@@ -62,7 +62,12 @@ let Stats = () => {
 
     axios.request(lastYearCommits)
       .then(function (response) {
+        if(response.data){
         setNumberOfCommits(response.data[0].total)
+        }
+        else {
+          setNumberOfCommits(20)
+        }
       })
       .catch(function (error) {
         console.error(error);
