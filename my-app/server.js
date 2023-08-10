@@ -20,7 +20,8 @@ app.get('/repo', async (req, res) => {
         headers: {
             'X-GitHub-Api-Version': '2022-11-28',
             'Authorization': octoId ,
-             'Access-Control-Allow-Private-Network': true
+            'Access-Control-Allow-Private-Network': 'true'
+
           }
    }
     axios.request(repoOptions.url).then((response) => {
@@ -36,7 +37,7 @@ app.get('/user', async (req, res) => {
     headers: {
         'X-GitHub-Api-Version': '2022-11-28',
         'Authorization': octoId,
-        'Access-Control-Allow-Private-Network': true
+        'Access-Control-Allow-Private-Network': 'true'
 
       }
     }
@@ -55,7 +56,7 @@ app.get('/lastYearCommits', async (req, res) => {
     headers: {
         'X-GitHub-Api-Version': '2022-11-28',
         'Authorization': octoId,
-        'Access-Control-Allow-Private-Network': true
+        'Access-Control-Allow-Private-Network': 'true'
 
       }
     }
