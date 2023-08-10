@@ -19,7 +19,8 @@ app.get('/repo', async (req, res) => {
         url: ' https://api.github.com/users/bttodd11/repos?per_page=100',
         headers: {
             'X-GitHub-Api-Version': '2022-11-28',
-            'Authorization': octoId 
+            'Authorization': octoId ,
+             'Access-Control-Allow-Private-Network': true
           }
    }
     axios.request(repoOptions.url).then((response) => {
@@ -34,7 +35,9 @@ app.get('/user', async (req, res) => {
     url: 'https://api.github.com/users/bttodd11',
     headers: {
         'X-GitHub-Api-Version': '2022-11-28',
-        'Authorization': octoId 
+        'Authorization': octoId,
+        'Access-Control-Allow-Private-Network': true
+
       }
     }
 
@@ -51,7 +54,9 @@ app.get('/lastYearCommits', async (req, res) => {
     url: 'https://api.github.com/repos/bttodd11/90Portfolio/stats/contributors',
     headers: {
         'X-GitHub-Api-Version': '2022-11-28',
-        'Authorization': octoId 
+        'Authorization': octoId,
+        'Access-Control-Allow-Private-Network': true
+
       }
     }
 
