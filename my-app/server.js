@@ -6,10 +6,20 @@ const { Octokit } = require('@octokit/rest');
 require('dotenv').config();
 let octoId = process.env.REACT_APP_USER_PASSWORD;
 const app = express();
-app.use(cors())
+app.use(cors());
 
 
-
+app.options(function(req, res, next) {
+  if (req.get("Origin") === "http://localhost:8000" &&
+      req.get("Access-Control-Request-Private-Network"))
+    res.set("Access-Control-Allow-Private-Network", "true");
+  next();
+});
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 
 app.get('/repo', async (req, res) => {
