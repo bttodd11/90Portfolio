@@ -17,10 +17,6 @@ let Stats = () => {
     const repo = {
       method: 'GET',
       url: "http://localhost:8000/repo",
-      headers: {
-        'Access-Control-Allow-Private-Network': 'true'
-      }
-    
     }
     axios.request(repo)
       .then(function (response) {
@@ -49,9 +45,6 @@ let Stats = () => {
     const user = {
       method: 'GET',
       url: "http://localhost:8000/user",
-      headers: {
-        'Access-Control-Allow-Private-Network': 'true'
-      }
     }
     axios.request(user)
       .then(function (response) {
@@ -64,9 +57,6 @@ let Stats = () => {
     const lastYearCommits = {
       method: 'GET',
       url: "http://localhost:8000/lastYearCommits",
-      headers: {
-        'Access-Control-Allow-Private-Network': 'true'
-      }
     }
 
 
