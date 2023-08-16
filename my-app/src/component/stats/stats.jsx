@@ -94,6 +94,7 @@ let Stats = () => {
             <a href={githubLink}><p className="statText">Github Link</p></a>
             <p className="statText">Commits for this Portfolio : {numberOfCommits}</p>
           </div>
+          <p className="statText">Powered by <a href="https://github.com/octokit" className="octoKitLink"><span>Octokit</span></a></p>
         </div>
       </div>
     </div>

@@ -19,11 +19,13 @@
     text-decoration: underline;
     color: #FFC107;
  }
-
+.octoKitLink {
+  color: #131D2E !important;
+  font-size: 7px !important;
+}
  .statText {
     font-size: 7px;
     font-family: "Press Start 2P", cursive;
-
  }
 
   
@@ -36,6 +38,10 @@
     }
     .statText{
       font-size: 12px;
+    }
+    .octoKitLink {
+      color: #6e5494 !important;
+      font-size: 12px !important;
     }
     .statBox {
       padding: 1%
