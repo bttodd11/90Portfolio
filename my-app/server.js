@@ -2,7 +2,6 @@ const PORT = 8000;
 const express = require('express')
 const cors = require('cors');
 const axios = require('axios');
-const { Octokit } = require('@octokit/rest');
 require('dotenv').config();
 let octoId = process.env.REACT_APP_USER_PASSWORD;
 const app = express();
