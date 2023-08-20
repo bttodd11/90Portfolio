@@ -20,6 +20,7 @@ app.get('/repo', async (req, res) => {
           }
    }
     axios.request(repoOptions.url).then((response) => {
+        console.log(response.data)
         res.json(response.data)
     })
 })
