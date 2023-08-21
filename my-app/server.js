@@ -19,7 +19,6 @@ app.get('/repo', async (req, res) => {
           }
    }
     axios.request(repoOptions.url).then((response) => {
-        console.log(response.data)
         res.json(response.data)
     })
 })
@@ -34,7 +33,6 @@ app.get('/user', async (req, res) => {
         'Authorization': octoId
       }
     }
-
        axios.request(userOptions).then((response) => {
       res.json(response.data)
     })

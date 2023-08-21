@@ -21,7 +21,7 @@ let Stats = () => {
     axios.request(repo)
       .then(function (response) {
 
-         // Finding the most commonly used languages 
+    // Finding the most commonly used languages 
     for(let index = 0; index < response.data.length; index++){
 
       let currentLanguage = response.data[index].language;
