@@ -90,7 +90,7 @@ let Stats = () => {
             <p className="statText">Repos: <span>{repos}</span></p>
             <p className="statText">Favorite Language: <span>{language}</span></p>
           </div>
-          <div className="col-md-6 col-sm-12 ">
+          <div className="col-md-6 col-sm-12">
             <a href={githubLink}><p className="statText">Github Link</p></a>
             <p className="statText">Commits for this Portfolio : {numberOfCommits}</p>
           </div>
