@@ -23,8 +23,6 @@ let Stats = () => {
     }
     axios.request(repo).then(function (response) {
       setRepos(response.data)
-    }).catch(function (error) {
-      console.error(error);
     })
   
 
@@ -38,8 +36,6 @@ let Stats = () => {
     }
     axios.request(user).then(function (response) {
         setGithubLink(response.data)
-      }).catch(function (error) {
-        console.error(error);
       })
 
     const lastYearCommits = {
@@ -51,9 +47,6 @@ let Stats = () => {
     }
     axios.request(lastYearCommits).then(function (response) {
         setNumberOfCommits(response.data)
-      })
-      .catch(function (error) {
-        console.error(error);
       })
     }
 
