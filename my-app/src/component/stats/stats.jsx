@@ -6,78 +6,60 @@ import "./stats.css";
 
 let Stats = () => {
 
-  let [repos, setRepos] = useState(60)
-  let [language, setLanguage] = useState('JavaScript')
-  let [githubLink, setGithubLink] = useState('https://github.com/bttodd11/')
-  let [numberOfCommits, setNumberOfCommits] = useState(24)
+  let [repos, setRepos] = useState(0)
+  let [language, setLanguage] = useState("JavaScript")
+  let [githubLink, setGithubLink] = useState('https://github.com/bttodd11')
+  let [numberOfCommits, setNumberOfCommits] = useState(0)
   let languageMap = {};
 
   let getRepo = () => {
 
     const repo = {
       method: 'GET',
-      url: "http://localhost:8000/repo",
-    }
-    axios.request(repo)
-      .then(function (response) {
-
-    // Finding the most commonly used languages 
-    for(let index = 0; index < response.data.length; index++){
-
-      let currentLanguage = response.data[index].language;
-
-      if(languageMap[currentLanguage]){
-        languageMap[currentLanguage] += 1
-      }  else {
-        languageMap[currentLanguage] = 1
+      url: "https://octoapi-bttodd11.vercel.app/api/v1/repo",
+      headers: {
+        "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
       }
     }
+    axios.request(repo).then(function (response) {
+      setRepos(response.data)
+    }).catch(function (error) {
+      console.error(error);
+    })
+  
 
-    // Find the lannguage of each repo and create a hashMap
-     let highValue = Object.values(languageMap).sort(function(a,b){return b - a});
-     setLanguage(Object.keys(languageMap).filter(function(key) {return languageMap[key] === highValue[0]})[0]);
-     setRepos(response.data.length)
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
 
     const user = {
       method: 'GET',
-      url: "http://localhost:8000/user",
+      url: "https://octoapi-bttodd11.vercel.app/api/v1/user",
+      headers: {
+        "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
+      }
     }
-    axios.request(user)
-      .then(function (response) {
-        setGithubLink(response.data.html_url)
-      })
-      .catch(function (error) {
+    axios.request(user).then(function (response) {
+        setGithubLink(response.data)
+      }).catch(function (error) {
         console.error(error);
       })
 
     const lastYearCommits = {
       method: 'GET',
-      url: "http://localhost:8000/lastYearCommits",
+      url: "https://octoapi-bttodd11.vercel.app/api/v1/lastYearCommits",
+      headers: {
+        "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
+      }
     }
-
-
-    axios.request(lastYearCommits)
-      .then(function (response) {
-        if(response.data[0]){
-        setNumberOfCommits(response.data[0].total)
-        }
-        else {
-          setNumberOfCommits(20)
-        }
+    axios.request(lastYearCommits).then(function (response) {
+        setNumberOfCommits(response.data)
       })
       .catch(function (error) {
         console.error(error);
       })
-
-  }
+    }
 
   useEffect(() => {
     getRepo()
-  }, [])
+  })
 
 
 
@@ -100,5 +82,6 @@ let Stats = () => {
     </div>
   )
 }
+
 
 export default Stats;
