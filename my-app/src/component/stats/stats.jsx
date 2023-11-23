@@ -10,7 +10,6 @@ let Stats = () => {
   let [language, setLanguage] = useState("JavaScript")
   let [githubLink, setGithubLink] = useState('https://github.com/bttodd11')
   let [numberOfCommits, setNumberOfCommits] = useState(0)
-  let languageMap = {};
 
   let getRepo = () => {
 
@@ -22,7 +21,10 @@ let Stats = () => {
       }
     }
     axios.request(repo).then(function (response) {
-      setRepos(response.data)
+      setRepos(response.data[0])
+      setLanguage(response.data[1])
+    }).catch((error) => {
+      
     })
   
 
@@ -36,6 +38,8 @@ let Stats = () => {
     }
     axios.request(user).then(function (response) {
         setGithubLink(response.data)
+      }).catch((error) => {
+
       })
 
     const lastYearCommits = {
@@ -47,12 +51,14 @@ let Stats = () => {
     }
     axios.request(lastYearCommits).then(function (response) {
         setNumberOfCommits(response.data)
+      }).catch((error) => {
+
       })
     }
 
   useEffect(() => {
     getRepo()
-  })
+  },[])
 
 
 
