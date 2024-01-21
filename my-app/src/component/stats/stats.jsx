@@ -7,7 +7,7 @@ import "./stats.css";
 let Stats = () => {
 
   let [repos, setRepos] = useState(0)
-  let [language, setLanguage] = useState("JavaScript")
+  let [language, setLanguage] = useState("")
   let [githubLink, setGithubLink] = useState('https://github.com/bttodd11')
   let [numberOfCommits, setNumberOfCommits] = useState(0)
 
