@@ -7,57 +7,66 @@ import "./stats.css";
 let Stats = () => {
 
   let [repos, setRepos] = useState(0)
-  let [language, setLanguage] = useState("")
+  let [language, setLanguage] = useState("JavaScript")
   let [githubLink, setGithubLink] = useState('https://github.com/bttodd11')
   let [numberOfCommits, setNumberOfCommits] = useState(0)
 
-  let getRepo = () => {
-
-    const repo = {
-      method: 'GET',
-      url: "https://octoapi-bttodd11.vercel.app/api/v1/repo",
-      headers: {
-        "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
-      }
+  const user = {
+    method: 'GET',
+    url: "https://octoapi-bttodd11.vercel.app/api/v1/user",
+    headers: {
+      "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
     }
-    axios.request(repo).then(function (response) {
+  }
+
+  const repo = {
+    method: 'GET',
+    url: "https://octoapi-bttodd11.vercel.app/api/v1/repo",
+    headers: {
+      "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
+    }
+  }
+
+  const lastYearCommits = {
+    method: 'GET',
+    url: "https://octoapi-bttodd11.vercel.app/api/v1/lastYearCommits",
+    headers: {
+      "Vary": "Origin"
+    }
+  }
+
+    // The functions that we are calling
+  let getUser = async () =>{
+    await axios.request(repo).then(function (response) {
       setRepos(response.data[0])
       setLanguage(response.data[1])
-    }).catch((error) => {
-      
-    })
+    }).catch((error) => { 
+  })
+}
+    
   
-
-
-    const user = {
-      method: 'GET',
-      url: "https://octoapi-bttodd11.vercel.app/api/v1/user",
-      headers: {
-        "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
-      }
-    }
-    axios.request(user).then(function (response) {
+  let getGithubLink = async () => {
+    await axios.request(user).then(function (response) {
         setGithubLink(response.data)
       }).catch((error) => {
-
+    })
+  }
+  
+  let getCommits = async () => {
+    await axios.request(lastYearCommits).then(function (response) {
+      setNumberOfCommits(response.data)
+    }).catch((error) => {
       })
+  }
 
-    const lastYearCommits = {
-      method: 'GET',
-      url: "https://octoapi-bttodd11.vercel.app/api/v1/lastYearCommits",
-      headers: {
-        "Vary": "Origin"
-      }
-    }
-    axios.request(lastYearCommits).then(function (response) {
-        setNumberOfCommits(response.data)
-      }).catch((error) => {
-
-      })
-    }
+  let getRepo = () => {
+      getUser()
+      getGithubLink()
+      getCommits()
+  }
 
   useEffect(() => {
-    getRepo()
+   getRepo()
   },[])
 
 
