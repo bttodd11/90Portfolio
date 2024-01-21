@@ -46,7 +46,7 @@ let Stats = () => {
       method: 'GET',
       url: "https://octoapi-bttodd11.vercel.app/api/v1/lastYearCommits",
       headers: {
-        "Access-Control-Allow-Origin": "https://octoapi-bttodd11.vercel.app/"
+        "Vary": "Origin"
       }
     }
     axios.request(lastYearCommits).then(function (response) {
