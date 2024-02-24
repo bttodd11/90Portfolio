@@ -35,7 +35,7 @@ let Stats = () => {
     }
   }
 
-    // The functions that we are calling
+  // The functions that we are calling
   let getUser = async () =>{
     await axios.request(repo).then(function (response) {
       setRepos(response.data[0])

@@ -20,27 +20,6 @@ const Preloader = () => {
           strings: ["Brian Todd"],
           lifeLike: true,
           speed: 90,
-          cursorChar: "&#128123",
-          cursor: {
-            autoPause: false,
-            animation: {
-              options: {
-                duration: 1000,
-                easing: "linear",
-                direction: "alternate",
-              },
-              frames: [
-                {
-                  transformOrigin: "0.575em 0.7em",
-                  transform: "rotate(0deg) scale(.5)",
-                },
-                {
-                  transformOrigin: "0.575em 0.7em",
-                  transform: "rotate(50deg) scale(3)",
-                },
-              ],
-            }
-          },
           afterComplete: function (instance) {
             instance.destroy();
           }
