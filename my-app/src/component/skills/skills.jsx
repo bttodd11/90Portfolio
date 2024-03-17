@@ -9,7 +9,7 @@ let skills = () => {
       <h2 className="skillTitle">Tech Savvy</h2>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-sm-6 col-md-6 col-lg-6 skillList">
+          <div className="col-sm-12 col-md-6 col-lg-6 skillList">
             <h2 className="skillHeader">Languages</h2>
             <p>JavaScript: 7yrs</p>
             <p>Java: 3yrs</p>
