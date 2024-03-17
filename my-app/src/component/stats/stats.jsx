@@ -82,9 +82,9 @@ let Stats = () => {
           </div>
           <div className="col-md-6 col-sm-12">
             <a href={githubLink}><p className="statText">Github Link</p></a>
-            <p className="statText">Commits for this Portfolio : {numberOfCommits}</p>
+            { numberOfCommits != 0 ? <p className="statText">Commits for this Portfolio : {numberOfCommits}</p> : <p className="statText">Powered by <a href="https://github.com/octokit" className="octoKitLink"><span>Octokit</span></a></p> }
           </div>
-          <p className="statText">Powered by <a href="https://github.com/octokit" className="octoKitLink"><span>Octokit</span></a></p>
+          {numberOfCommits != 0 ?  <p className="statText">Powered by <a href="https://github.com/octokit" className="octoKitLink"><span>Octokit</span></a></p> : null }
         </div>
       </div>
     </div>
