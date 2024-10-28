@@ -45,7 +45,7 @@ let Contact = () => {
       To: 'bttodd@icloud.com',
       From: "bttodd@icloud.com",
       Subject: "Email from " + firstNameField + " " + lastNameField ,
-      Body: messageField + " - \return email - " + emailAddressField,
+      Body: messageField + " - \n return email - " + emailAddressField,
     }).then(
       alert("Your message has been sent"),
       setFirstNameField(""),
