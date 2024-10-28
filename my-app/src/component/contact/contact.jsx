@@ -41,13 +41,17 @@ let Contact = () => {
 
 
     window.Email.send({
-      SecureToken: "a0a08220-be2f-4bf1-bcd4-c632ab63b0e7",
+      SecureToken: "68247df9-1d1c-4502-8fa8-8577b553e8fd",
       To: 'bttodd@icloud.com',
-      From: emailAddressField,
-      Subject: "Email from " + firstNameField + " " + lastNameField,
-      Body: messageField,
+      From: "bttodd@icloud.com",
+      Subject: "Email from " + firstNameField + " " + lastNameField ,
+      Body: messageField + " - \return email - " + emailAddressField,
     }).then(
-      alert("Your message has been sent")
+      alert("Your message has been sent"),
+      setFirstNameField(""),
+      setLastNameField(""),
+      setMessageField(""),
+      setEmailAddress("")
       )
   };
 
@@ -57,12 +61,12 @@ let Contact = () => {
         <div className="p-3 m-0 border-0 row">
           <p className="contactTitle">Connect</p>
           <div className="col-md-4 col-sm-12">
-            <input type="email" className="form-control firstName" onChange={(e) => setFirstNameField(e.target.value)} placeholder="First Name"></input>
-            <input type="email" className="form-control lastName" onChange={(e) => setLastNameField(e.target.value)} placeholder="Last Name"></input>
-            <input type="email" className="form-control emailAddress" onChange={(e) => setEmailAddress(e.target.value)} placeholder="Email Address"></input>
+            <input type="email" className="form-control firstName" onChange={(e) => setFirstNameField(e.target.value)} placeholder="First Name" value={firstNameField}></input>
+            <input type="email" className="form-control lastName" onChange={(e) => setLastNameField(e.target.value)} placeholder="Last Name" value={lastNameField}></input>
+            <input type="email" className="form-control emailAddress" onChange={(e) => setEmailAddress(e.target.value)} placeholder="Email Address" value={emailAddressField}></input>
           </div>
           <div className="col-md-8 col-sm-12">
-            <textarea className="form-control message" id="exampleFormControlTextarea1" onChange={(e) => setMessageField(e.target.value)} placeholder="Enter Message" rows="6"></textarea>
+            <textarea className="form-control message" id="exampleFormControlTextarea1" onChange={(e) => setMessageField(e.target.value)} placeholder="Enter Message" rows="6" value={messageField}></textarea>
           </div>
           <button type="button" className="btn btn-warning small" onClick={() => sendEmail()}>Send Message</button>
         </div>
