@@ -41,7 +41,7 @@ let Contact = () => {
 
 
     window.Email.send({
-      SecureToken: "fe7a8d59-9f6a-4f27-a6c1-ea9394aa8d34",
+      SecureToken: "a0a08220-be2f-4bf1-bcd4-c632ab63b0e7",
       To: 'bttodd@icloud.com',
       From: emailAddressField,
       Subject: "Email from " + firstNameField + " " + lastNameField,
