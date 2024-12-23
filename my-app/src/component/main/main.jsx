@@ -36,10 +36,10 @@ let Main = () => {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6">
         <div className="infoDiv">
-          <p className="name"> <span className="arrow">&#10148;</span> Player: <span className="myName"> Brian Todd</span></p>
-          <p>Location: <span> South Austin,Texas</span></p>
-          <p>Occupation: <span> Software Engineer</span></p>
-          <p>Experience: <span id="experience">0</span></p>
+          <span className="name infoDivText"> <span className="arrow">&#10148;</span> <span>Player: </span></span><span className="myName"> Brian Todd</span>
+          <p className="infoDivText">Location: <span> South Austin,Texas</span></p>
+          <p className="infoDivText">Occupation: <span> Software Engineer</span></p>
+          <p className="infoDivText">Experience: <span id="experience">0</span></p>
         </div>
           </div>
         </div>
