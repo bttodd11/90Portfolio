@@ -1,6 +1,7 @@
 import "./blog.css";
 import React, { useEffect, useState } from "react";
 import BlogContent from '../blogContent/BlogContent';
+import Links from "../nav/nav"
 import { createClient } from 'contentful';
 
 
@@ -46,6 +47,7 @@ let Blogs = () => {
 
   return (
     <div id="blogSection">
+      <Links />
       <div className="container-fluid">
         <div className="row">
           {posts.map((post, idx) => (
@@ -53,7 +55,6 @@ let Blogs = () => {
               <div className="blog-post">
                 <h2 color="white">{post.fields.title}</h2>
                 <p className="date">{new Date(post.fields.date.createdAt).toLocaleDateString()}</p>
-                <p>{post.fields.content || post.content}</p>
               </div>
             </div>
           ))}

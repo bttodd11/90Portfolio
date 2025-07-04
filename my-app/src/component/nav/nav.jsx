@@ -14,7 +14,7 @@ const Links = () => {
       <div className="navSection">
         <Nav className="justify-content-center navLinks">
           <Nav.Item>
-            <Link className="navLink" to="/">Home</Link>
+            <Link className="navLink" to="/main">Home</Link>
           </Nav.Item>
         </Nav>
       </div>
