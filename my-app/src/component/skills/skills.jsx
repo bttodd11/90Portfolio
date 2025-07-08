@@ -59,31 +59,31 @@ let Skills = () => {
           <div className="col-sm-12 col-md-6 col-lg-6 skillList">
             <h2 className="skillHeader">Languages</h2>
             <div className="spacer">
-            <p style={{display:"inline"}}>JavaScript </p><p className="count" id="javaScript">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>JavaScript: </p><p className="count" id="javaScript">0</p><p style={{display:"inline"}}></p>
             </div>
             <div className="spacer">
-            <p style={{display:"inline"}}>Java </p><p className="count" id="java">0</p><p style={{display: "inline"}}></p>
+            <p style={{display:"inline"}}>Java: </p><p className="count" id="java">0</p><p style={{display: "inline"}}></p>
             </div>
             <div className="spacer">
-            <p style={{display:"inline"}}>TypeScript </p><p className="count" id="typeScript">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>TypeScript: </p><p className="count" id="typeScript">0</p><p style={{display:"inline"}}></p>
             </div>
             <div className="spacer">
-            <p style={{display:"inline"}}>GraphQL </p><p className="count" id="graphql">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>GraphQL: </p><p className="count" id="graphql">0</p><p style={{display:"inline"}}></p>
             </div>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 skillList">
             <h2 className="skillHeader">Frameworks</h2>
             <div className="spacer">
-            <p style={{display:"inline"}}>React </p><p className="count" id="react">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>React: </p><p className="count" id="react">0</p><p style={{display:"inline"}}></p>
             </div>
             <div className="spacer">
-            <p style={{display:"inline"}}>Angular </p><p className="count" id="angular">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>Angular: </p><p className="count" id="angular">0</p><p style={{display:"inline"}}></p>
             </div>
             <div className="spacer">
-            <p style={{display:"inline"}}>Bootstrap </p><p className="count" id="bootstrap">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>Bootstrap: </p><p className="count" id="bootstrap">0</p><p style={{display:"inline"}}></p>
             </div>
             <div className="spacer">
-            <p style={{display:"inline"}}>Jest </p><p className="count" id="jest">0</p><p style={{display:"inline"}}></p>
+            <p style={{display:"inline"}}>Jest: </p><p className="count" id="jest">0</p><p style={{display:"inline"}}></p>
             </div>
           </div>
         </div>

@@ -53,8 +53,8 @@ let Blogs = () => {
           {posts.map((post, idx) => (
             <div key={post.id || idx} className="col-sm-12 col-md-4 col-lg-4">
               <div className="blog-post">
-                <h2 color="white">{post.fields.title}</h2>
-                <p className="date">{new Date(post.fields.date.createdAt).toLocaleDateString()}</p>
+                <h2 className="blogTitle">{post.fields.title}</h2>
+                <p className="blogDate">{new Date(post.fields.date.createdAt).toLocaleDateString()}</p>
               </div>
             </div>
           ))}

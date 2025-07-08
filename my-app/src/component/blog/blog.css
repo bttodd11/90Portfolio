@@ -1,10 +1,16 @@
 #blogSection{
 
 }
+.blogTitle {
+    text-align: center;
+}
+.blogDate {
+    text-align: center;
+}
 
 .blog-post{
-
-    margin: 10px;
+    margin: 20px;
+    padding: 10%;
     border: 1px solid #f9f9f9;
     background-color: #f0f0f0;
 }
