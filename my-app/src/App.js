@@ -9,6 +9,7 @@ import Stats from './component/stats/stats';
 import Work from './component/work/work';
 import Blog from './component/blog/blog';
 import './App.css';
+import BlogContent from './component/blogContent/BlogContent';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element ={<Preloader />} />
           <Route path="/main" element ={<Main />} />
           <Route path='/blog' element = {<Blog />} />
+           <Route path='/blogContent' element = {<BlogContent />} />
         </Routes>
       </HashRouter>
     </React.StrictMode>

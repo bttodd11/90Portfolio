@@ -16,6 +16,20 @@ const Links = () => {
           <Nav.Item>
             <Link className="navLink" to="/main">Home</Link>
           </Nav.Item>
+          <Nav.Item>
+            <Link className="navLink" to="/blog">Back</Link>
+          </Nav.Item>
+        </Nav>
+      </div>
+    );
+  }
+  if (location.pathname === "/blogContent") {
+    return (
+      <div className="navSection">
+        <Nav className="justify-content-center navLinks">
+          <Nav.Item>
+            <Link className="navLink" to="/blog">Back</Link>
+          </Nav.Item>
         </Nav>
       </div>
     );

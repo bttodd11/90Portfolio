@@ -1,38 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import Links from "../nav/nav";
+import "../blogContent/BlogContent.css";
 
-const BlogContent = ({ apiUrl }) => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const formatDate = (dateString) => {
+  const dateObj = new Date(dateString);
+  return dateObj.toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(apiUrl)
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then((data) => {
-        setPosts(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [apiUrl]);
+const BlogContent = ({ post }) => {
+  let postContent = useLocation().state
 
-  if (loading) return <div>Loading blog posts...</div>;
-  if (error) return <div>Error: {error}</div>;
+ useEffect(()=> { 
+  // Just wanted a rerender on passed content
+ },[postContent])
 
-  return (
-    <div>
-      {posts.map((post, idx) => (
-        <div key={post.id || idx} className="blog-post">
-          <h2>{post.title}</h2>
-          <p>{post.body || post.content}</p>
-        </div>
-      ))}
+  
+
+  return (      
+    <div className='BlogContentSection'>
+  <Links />
+    <article>
+      <h1 className='blogContentTitle'>
+        {postContent.fields.title}
+      </h1>
+      <p className='blogContentDate'>
+        <em>{formatDate(postContent.fields.date)}</em>
+      </p>
+      <div className='blogContentContent'>
+        {postContent.fields.content}
+      </div>
+    </article>
     </div>
   );
 };

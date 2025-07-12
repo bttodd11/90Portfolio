@@ -1,14 +1,15 @@
 import "./blog.css";
 import React, { useEffect, useState } from "react";
 import BlogContent from '../blogContent/BlogContent';
-import Links from "../nav/nav"
+import Links from "../nav/nav";
 import { createClient } from 'contentful';
-
+import { useNavigate, Routes, Route } from "react-router-dom";
 
 let Blogs = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   let getAllBlogs = async () => {
     const client = createClient({
@@ -29,21 +30,19 @@ let Blogs = () => {
     }
   };
 
-
-
   useEffect(() => {
     setLoading(true);
-    let blogPost = getAllBlogs();
-    blogPost.then((data) => {
-      setPosts(data);
-      console.log(posts)
-      setLoading(false);
-    }).catch((err) => {
-      setError(err);
-      setLoading(false);
-    });
+    getAllBlogs();
+    // eslint-disable-next-line
   }, []);
 
+  const handlePostClick = (post) => {
+    console.log(post)
+    navigate(`/blogContent`, {state: post });
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error loading posts.</div>;
 
   return (
     <div id="blogSection">
@@ -51,18 +50,24 @@ let Blogs = () => {
       <div className="container-fluid">
         <div className="row">
           {posts.map((post, idx) => (
-            <div key={post.id || idx} className="col-sm-12 col-md-4 col-lg-4">
+            <div
+              key={post.sys?.id || idx}
+              className="col-sm-12 col-md-4 col-lg-4"
+              onClick={() => handlePostClick(post)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="blog-post">
                 <h2 className="blogTitle">{post.fields.title}</h2>
-                <p className="blogDate">{new Date(post.fields.date.createdAt).toLocaleDateString()}</p>
+                <p className="blogDate">
+                  {new Date(post.fields.date?.createdAt || post.sys.createdAt).toLocaleDateString()}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </div>
-  )
-
-}
+  );
+};
 
 export default Blogs;
