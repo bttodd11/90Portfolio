@@ -3,9 +3,15 @@
 }
 .blogTitle {
     text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 13px;
 }
 .blogDate {
     text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 10px;
+    color: #ffc107;
+    margin-top: 12%;
 }
 
 .blog-post{

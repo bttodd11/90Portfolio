@@ -14,6 +14,7 @@ article {
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
+    font-family: "Andada Pro", serif;
 }
 
 .blogContentDate {
@@ -21,10 +22,14 @@ article {
     font-size: '1rem';
     margin-bottom: '2rem';
     text-align: center;
+    font-family: "Andada Pro", serif;
+    font-weight: bold;
 }
 
 .blogContentContent {
     font-size: 20px;
     line-height: 1.7;
     color: #222;
+    font-family: "Andada Pro", serif;
+    font-optical-sizing: auto;
 }
