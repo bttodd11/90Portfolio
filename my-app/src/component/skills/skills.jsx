@@ -13,6 +13,8 @@ let Skills = () => {
   let angularYear = 2018
   let bootstrapYear = 2016
   let jestYear = 2022
+  let spring = 2023
+  let springBoot = 2023
   let countUpAnim;
   let countUpAnim1;
   let countUpAnim2
@@ -21,6 +23,8 @@ let Skills = () => {
   let countUpAnim5
   let countUpAnim6
   let countUpAnim7
+  let countUpAnim8
+  let countUpAnim9
 
 
     useEffect(() => {
@@ -37,6 +41,8 @@ let Skills = () => {
       countUpAnim5 = new CountUp('angular', yearNow - angularYear, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
       countUpAnim6 = new CountUp('bootstrap', yearNow - bootstrapYear, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
       countUpAnim7 = new CountUp('jest', yearNow - jestYear, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
+      countUpAnim8 = new CountUp('spring', yearNow - spring, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
+      countUpAnim9 = new CountUp('springBoot', yearNow - spring, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
       if (!countUpAnim.error) {
         countUpAnim.start();
         countUpAnim1.start()
@@ -46,6 +52,8 @@ let Skills = () => {
         countUpAnim5.start()
         countUpAnim6.start()
         countUpAnim7.start()
+        countUpAnim8.start()
+        countUpAnim9.start()
       } else {
         console.error(countUpAnim.error);
       }
@@ -58,6 +66,8 @@ let Skills = () => {
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-6 skillList">
             <h2 className="skillHeader">Languages</h2>
+             <div className="row">
+              <div className="col-12">
             <div className="spacer">
             <p style={{display:"inline"}}>JavaScript: </p><p className="count" id="javaScript">0</p><p style={{display:"inline"}}></p>
             </div>
@@ -71,8 +81,12 @@ let Skills = () => {
             <p style={{display:"inline"}}>GraphQL: </p><p className="count" id="graphql">0</p><p style={{display:"inline"}}></p>
             </div>
           </div>
+          </div>
+          </div>
           <div className="col-sm-12 col-md-6 col-lg-6 skillList">
             <h2 className="skillHeader">Frameworks</h2>
+            <div className="row">
+            <div className="col-sm-12 col-md-6 col-lg-6">
             <div className="spacer">
             <p style={{display:"inline"}}>React: </p><p className="count" id="react">0</p><p style={{display:"inline"}}></p>
             </div>
@@ -81,14 +95,24 @@ let Skills = () => {
             </div>
             <div className="spacer">
             <p style={{display:"inline"}}>Bootstrap: </p><p className="count" id="bootstrap">0</p><p style={{display:"inline"}}></p>
-            </div>
+            </div>  
             <div className="spacer">
             <p style={{display:"inline"}}>Jest: </p><p className="count" id="jest">0</p><p style={{display:"inline"}}></p>
+            </div>
+            </div>
+            <div className="col-sm-12 col-md-6 col-lg-6">
+            <div className="spacer">
+            <p style={{display:"inline"}}>Spring: </p><p className="count" id="spring">0</p><p style={{display:"inline"}}></p>
+            </div>
+            <div className="spacer">
+            <p style={{display:"inline"}}>Springboot: </p><p className="count" id="springBoot">0</p><p style={{display:"inline"}}></p>
+            </div>
+            </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   )
 }
 
