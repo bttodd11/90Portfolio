@@ -4,8 +4,14 @@ article {
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     font-family: system-ui, sans-serif;
-    width: 75% !important;
+    width: 85% !important;
     margin: auto !important;
+}
+
+.blogContentQuote {
+    font-family: "Andada Pro", serif;
+    text-align: center;
+    font-size: 12px;
 }
 
 .blogContentTitle {
@@ -27,9 +33,35 @@ article {
 }
 
 .blogContentContent {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 1.7;
     color: #222;
     font-family: "Andada Pro", serif;
     font-optical-sizing: auto;
+}
+
+.blogContentImage {
+    float: none;
+    shape-outside: 'sqaure(50%)';
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15%;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    margin: 5% 0 10% 15%;
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+.blogContentImage {
+    float: right;
+    shape-outside: sqaure(50%);
+    width: 400px;
+    height: 400px;
+    margin: 0 0 1em 2em;
+}
+.blogContentContent {
+    font-size: 22px;
+    margin: 4%;
+}
 }

@@ -13,28 +13,41 @@ const formatDate = (dateString) => {
 };
 
 const BlogContent = ({ post }) => {
-  let postContent = useLocation().state
+  let postContent = useLocation().state;
 
- useEffect(()=> { 
-  // Just wanted a rerender on passed content
- },[postContent])
+  useEffect(() => {
+    // Just wanted a rerender on passed content
+    console.log(postContent)
+  }, [postContent]);
 
-  
-
-  return (      
+  return (
     <div className='BlogContentSection'>
-  <Links />
-    <article>
-      <h1 className='blogContentTitle'>
-        {postContent.fields.title}
-      </h1>
-      <p className='blogContentDate'>
-        <em>{formatDate(postContent.fields.date)}</em>
-      </p>
-      <div className='blogContentContent'>
-        {postContent.fields.content}
-      </div>
-    </article>
+      <Links />
+      <article>
+        <h1 className='blogContentTitle'>
+          {postContent.fields.title}
+        </h1>
+        {postContent.fields.quote && (
+          <blockquote className='blogContentQuote'>
+            {postContent.fields.quote}
+          </blockquote>
+        )}
+        <p className='blogContentDate'>
+          <em>{formatDate(postContent.fields.date)}</em>
+        </p>
+        <div className='blogContentContent' style={{ position: 'relative', lineHeight: '2' }}>
+          {postContent.fields.media && (
+            <img
+              src={postContent.fields.media.fields.file.url}
+              alt={postContent.fields.title}
+              className='blogContentImage'
+            />
+          )}
+          <span style={{ display: 'block', textAlign: 'justify' }}>
+            {postContent.fields.content}
+          </span>
+        </div>
+      </article>
     </div>
   );
 };
