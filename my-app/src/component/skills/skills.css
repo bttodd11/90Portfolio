@@ -3,6 +3,7 @@
 }
 .count {
   display: inline;
+  color: #FFC107;
 }
 .spacer {
   margin: 3%;

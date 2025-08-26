@@ -1,0 +1,26 @@
+#blogSection{
+
+}
+.blogTitle {
+    text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 13px;
+}
+.blogDate {
+    text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 10px;
+    color: #ffc107;
+    margin-top: 12%;
+}
+
+.blog-post{
+    margin: 20px;
+    padding: 50px;
+    border: 1px solid #ffc107;
+    background-color: rgba(245, 247, 250, 0.7);
+    width: 400px;
+    height: 200px;
+    box-sizing: border-box;
+    overflow: hidden;
+}

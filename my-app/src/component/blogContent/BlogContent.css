@@ -1,0 +1,73 @@
+article {
+    padding: 2rem;
+    background-color: rgba(245, 247, 250, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    font-family: system-ui, sans-serif;
+    width: 85% !important;
+    margin: auto !important;
+}
+
+.blogContentQuote {
+    font-family: "Andada Pro", serif;
+    text-align: center;
+    font-size: 12px;
+}
+
+.blogContentTitle {
+    font-size: '2.5rem';
+    margin-bottom: '0.5rem';
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    font-family: "Andada Pro", serif;
+}
+
+.blogContentDate {
+    color: #888;
+    font-size: '1rem';
+    margin-bottom: '2rem';
+    text-align: center;
+    font-family: "Andada Pro", serif;
+    font-weight: bold;
+}
+
+.blogContentContent {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #222;
+    font-family: "Andada Pro", serif;
+    font-optical-sizing: auto;
+}
+
+.blogContentImage {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10%;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin: 4% 0 8% 10%;
+    opacity: 0.85;
+    filter: grayscale(10%);
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+article {
+    width: 70% !important;  
+    min-height: 750px;
+}
+.blogContentImage {
+    float: right;
+    shape-outside: sqaure(50%);
+    width: 300px;
+    height: 300px;
+    margin: 0 0 1em 2em;
+    opacity: 0.85;
+    filter: grayscale(10%);
+}
+.blogContentContent {
+    font-size: 22px;
+    margin: 4%;
+}
+}

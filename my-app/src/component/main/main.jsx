@@ -1,5 +1,10 @@
 import {React, useEffect} from "react";
 import headshot from "../../img/pixelCharacter.png";
+import Links from "../nav/nav"
+import Work from "../work/work";
+import Skills from "../skills/skills";
+import Stats from "../stats/stats";
+import Contact from "../contact/contact";
 import "./main.css";
 import {CountUp} from "countup.js";
 
@@ -29,6 +34,7 @@ let Main = () => {
 
   return (
     <div className="mainSection">
+      <Links />
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-6 imageDiv">
@@ -44,7 +50,10 @@ let Main = () => {
           </div>
         </div>
       </div>
-
+        <Work />
+        <Skills /> 
+        <Stats />
+        <Contact />
     </div>
   )
 }
