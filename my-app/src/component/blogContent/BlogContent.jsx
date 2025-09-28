@@ -29,7 +29,7 @@ const BlogContent = ({ post }) => {
         </h1>
         {postContent.fields.quote && (
           <blockquote className='blogContentQuote'>
-            {postContent.fields.quote}
+            {'" ' + postContent.fields.quote + ' "'}
           </blockquote>
         )}
         <p className='blogContentDate'>
@@ -43,7 +43,7 @@ const BlogContent = ({ post }) => {
               className='blogContentImage'
             />
           )}
-          <span style={{ display: 'block', textAlign: 'justify' }}>
+          <span className="blogContentText" style={{ display: 'block', textAlign: 'justify' }}>
             {postContent.fields.content}
           </span>
         </div>

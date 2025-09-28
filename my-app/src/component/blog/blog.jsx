@@ -13,9 +13,9 @@ let Blogs = () => {
 
   let getAllBlogs = async () => {
     const client = createClient({
-      space: 'qj0fqcd2205y',
-      environment: 'master',
-      accessToken: 'a9upziXUL7zbuCyO2TftQ5Pa_0a_VUopskBY2mdHLnE'
+      space: process.env.REACT_APP_SPACE,
+      environment: process.env.REACT_APP_ENV,
+      accessToken: process.env.REACT_APP_ACCESS_TOKEN
     });
 
     try {
@@ -56,9 +56,9 @@ let Blogs = () => {
               onClick={() => handlePostClick(post)}
               style={{ cursor: "pointer" }}
             >
-              <div className="blog-post">
-                <h2 className="blogTitle">{post.fields.title}</h2>
-                <p className="blogDate">
+              <div className="blog-post modern-blog-post">
+                <h2 className="blogTitle modern-blog-title">{post.fields.title}</h2>
+                <p className="blogDate modern-blog-date">
                   {new Date(post.fields.date?.createdAt || post.sys.createdAt).toLocaleDateString()}
                 </p>
               </div>
