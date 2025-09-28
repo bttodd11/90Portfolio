@@ -13,9 +13,9 @@ let Blogs = () => {
 
   let getAllBlogs = async () => {
     const client = createClient({
-      space: 'qj0fqcd2205y',
-      environment: 'master',
-      accessToken: 'a9upziXUL7zbuCyO2TftQ5Pa_0a_VUopskBY2mdHLnE'
+      space: process.env.REACT_APP_SPACE,
+      environment: process.env.REACT_APP_ENV,
+      accessToken: process.env.REACT_APP_ACCESS_TOKEN
     });
 
     try {
