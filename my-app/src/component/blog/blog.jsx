@@ -10,12 +10,15 @@ let Blogs = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  let space = process.env.REACT_APP_SPACE;
+  let environment = process.env.REACT_APP_ENV;
+  let token = process.env.REACT_APP_ACCESS_TOKEN;
 
   let getAllBlogs = async () => {
     const client = createClient({
-      space: process.env.REACT_APP_SPACE,
-      environment: process.env.REACT_APP_ENV,
-      accessToken: process.env.REACT_APP_ACCESS_TOKEN
+      space: space,
+      environment: environment,
+      accessToken: token
     });
 
     try {
