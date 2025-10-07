@@ -1,11 +1,12 @@
 article {
     padding: 2rem;
-    background-color: white;
+    background-color: black;
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     font-family: system-ui, sans-serif;
     width: 85% !important;
     margin: auto !important;
+    border: 2px solid #FFC107;
+
 }
 .blockContentSection {
     display: flex;
@@ -16,8 +17,8 @@ article {
 .blogContentQuote {
     font-family: "Andada Pro", serif;
     text-align: center;
-    font-size: 13px;
-    color: #888;
+    font-size: 15px;
+    color: #FFC107;
 }
 
 .blogContentTitle {
@@ -27,10 +28,11 @@ article {
     line-height: 1.2;
     text-align: center;
     font-family: "Andada Pro", serif;
+    color:#FFC107;
 }
 
 .blogContentDate {
-    color: #888;
+    color: #FFC107;
     font-size: '1rem';
     margin-bottom: '2rem';
     text-align: center;
@@ -41,7 +43,7 @@ article {
 .blogContentContent {
     font-size: 14px;
     line-height: 1.7;
-    color: #222;
+    color: #FFC107;
     font-family: "Andada Pro", serif;
     font-optical-sizing: auto;
 }
@@ -58,9 +60,9 @@ article {
     border: 6px solid transparent;
     border-radius: 25%;
     background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #6dd5ed, #FFC107, #FFC107, #f2fcfe) border-box;
-    box-shadow: 0 8px 32px #FFC107;
+        linear-gradient(black, black) padding-box,
+        linear-gradient(135deg, black, #FFC107, #FFC107, black) border-box;
+    box-shadow: 0 4px 16px #FFC107;
     transition: box-shadow 0.3s, border-color 0.3s;
 }
 .blogContentImage:hover {
@@ -88,7 +90,7 @@ article {
     filter: grayscale(10%);
 }
 .blogContentContent {
-    font-size: 22px;
+    font-size: 25px;
     margin: 4%;
     font-weight: 500;
 }
