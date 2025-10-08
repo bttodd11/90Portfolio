@@ -4,7 +4,7 @@
   height: 77vh;
   background-size: cover;
   position: relative;
-  color: white;
+  color: #ffc107;
 }
 
 #copyright {
@@ -40,16 +40,22 @@
 }
 
 .startText {
-letter-spacing: 2px;
-font-size: 12px;
-font-family: 'Press Start 2P', cursive;
-animation: blink 
-  1.5s linear infinite;
-  color: white;
-  text-decoration: none;
-}
-.startText :hover {
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', cursive;
+  animation: blink 1.5s linear infinite;
   color: #ffc107;
+  text-decoration: none;
+  border: 2px solid #ffc107;
+  border-radius: 4px;
+  padding: 18px 18px 6px 18px; /* Increased for more even spacing */
+  box-sizing: border-box;
+  display: inline-block;
+  background: transparent;
+}
+.startText:hover {
+  color: #ffc107;
+  border-color: #ffc107;
 }
 
 .ti-cursor {
