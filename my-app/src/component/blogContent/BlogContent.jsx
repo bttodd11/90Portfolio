@@ -17,7 +17,6 @@ const BlogContent = ({ post }) => {
 
   useEffect(() => {
     // Just wanted a rerender on passed content
-    console.log(postContent)
   }, [postContent]);
 
   return (
