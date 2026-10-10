@@ -1,48 +1,159 @@
 .navSection {
-    background-color: black;
-    font-family: "Press Start 2P", cursive;
-    padding-bottom: 5%;
-}
-a {
-    text-decoration: none;
-    color: #FFC107;
-    font-size: 10px
-    ;
-}
-.nav-item{
-    color: #FFC107 !important;
-    margin: 1% 3%;
+  background-color: black;
+  font-family: "Press Start 2P", cursive;
+  padding-bottom: 5%;
 }
 
+a,
+.navLink {
+  text-decoration: none;
+  color: #FFC107;
+  font-size: 10px;
+}
+
+.nav-item {
+  color: #FFC107 !important;
+  margin: 1% 3%;
+}
+
+.navButtonLink {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: #FFC107;
+  font-size: 10px;
+}
+
+/* Password modal styles */
+.navPasswordOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+.navPasswordModal {
+  background: #111111;
+  color: #FFC107;
+  border: 2px solid #FFC107;
+  border-radius: 12px;
+  padding: 24px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.35);
+}
+
+.navPasswordHeader {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  color: #FFC107;
+}
+
+.navPasswordForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.navPasswordInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #FFC107;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #000;
+  color: #FFC107;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+}
+
+.navPasswordInput:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+}
+
+.navPasswordError {
+  color: #ff5c5c;
+  margin-bottom: 12px;
+  font-size: 10px;
+}
+
+.navPasswordActions {
+  display: flex;
+  gap: 10px;
+}
+
+.navPasswordButton,
+.navPasswordCancelButton {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #FFC107;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+}
+
+.navPasswordButton {
+  background: #FFC107;
+  color: #000;
+}
+
+.navPasswordCancelButton {
+  background: #000;
+  color: #FFC107;
+}
 
 /* Desktop */
 @media (min-width: 992px) {
-.navSection {
+  .navSection {
     background-color: black;
     font-family: "Press Start 2P", cursive;
     padding-bottom: 5%;
-}
-a {
+  }
+
+  a,
+  .navLink {
     text-decoration: none;
     color: #FFC107;
-    font-size: 20px
-}
-a:hover {
+    font-size: 20px;
+  }
+
+  a:hover,
+  .navLink:hover {
     color: white;
     text-shadow:
-    0 0 5px #fff,
-    0 0 5px #fff,
-    0 0 10px #fff,
-}
-.nav-item{
-    color: #FFC107 !important;
-    text-shadow:
-     0 0 5px #fff,
-     0 0 5px #fff,
-     0 0 10px #fff,
-}
-.nav-item:visited {
-    color: #FFC107;
+      0 0 5px #fff,
+      0 0 5px #fff,
+      0 0 10px #fff;
+  }
 
-}
+  .nav-item {
+    color: #FFC107 !important;
+  }
+
+  .nav-item:visited {
+    color: #FFC107;
+  }
+
+  .navButtonLink:hover {
+    color: white;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 5px #fff,
+      0 0 10px #fff;
+  }
+
+  .navPasswordModal {
+    width: 360px;
+  }
+
+  .navPasswordInput,
+  .navPasswordButton,
+  .navPasswordCancelButton {
+    font-size: 9px;
+  }
 }
