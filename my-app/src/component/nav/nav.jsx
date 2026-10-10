@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
-const BLOG_PASSWORD = process.env.PW;
+const BLOG_PASSWORD = process.env.REACT_APP_BLOG_PASSWORD;
 
 const Links = () => {
   const location = useLocation();
