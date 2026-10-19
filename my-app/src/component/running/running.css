@@ -1,0 +1,230 @@
+#runningSection {
+  background-color: black;
+  min-height: 100vh;
+  width: 100%;
+  padding-bottom: 10%;
+  font-family: "Press Start 2P", cursive;
+}
+.runTitle {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  color: #FFC107;
+  padding: 0 10% 6%;
+}
+.runText {
+  font-size: 7px;
+  color: white;
+}
+.runText span {
+  color: #FFC107;
+}
+.runEmpty {
+  text-align: center;
+  font-size: 10px;
+}
+.runContainer {
+  max-width: 1100px;
+}
+
+/* Range filter */
+.runFilters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.runFilter {
+  background: black;
+  color: #FFC107;
+  border: 1px solid #FFC107;
+  border-radius: 0.375rem;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 8px;
+  cursor: pointer;
+}
+.runFilterActive {
+  background: #FFC107;
+  color: black;
+}
+
+/* Stat tiles */
+.runTiles {
+  margin-bottom: 8px;
+}
+.runTileCol {
+  min-width: 140px;
+  margin-bottom: 12px;
+}
+.runTile {
+  background: white;
+  border-radius: 0.375rem;
+  text-align: center;
+  padding: 14px 6px;
+  height: 100%;
+}
+.runTileLabel {
+  font-size: 7px;
+  color: #555;
+  margin-bottom: 10px;
+}
+.runTileValue {
+  font-size: 12px;
+  color: black;
+  margin: 0;
+}
+
+/* Panels */
+.runPanel {
+  border: 1px solid #FFC107;
+  border-radius: 0.375rem;
+  padding: 16px;
+  margin-bottom: 16px;
+  min-height: 90%;
+}
+.runPanelTitle {
+  color: #FFC107;
+  font-size: 10px;
+  margin-bottom: 16px;
+}
+.runPanelHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.runPanelHeader .runPanelTitle {
+  margin-bottom: 0;
+}
+.runSelect {
+  background: black;
+  color: #FFC107;
+  border: 1px solid #FFC107;
+  border-radius: 0.375rem;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 8px;
+  cursor: pointer;
+}
+.runSelect:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+}
+.runRank {
+  color: #999;
+}
+.runTable td.runHighlight {
+  color: #FFC107;
+}
+.runRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+/* Chart */
+.runChart {
+  position: relative;
+}
+.runChart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.runGrid {
+  stroke: #333;
+  stroke-width: 1;
+}
+.runAxis {
+  fill: #999;
+  font-size: 9px;
+  font-family: "Press Start 2P", cursive;
+}
+.runBar {
+  fill: #FFC107;
+}
+.runBarActive {
+  fill: #FFD54F;
+}
+.runTooltip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  background: black;
+  border: 1px solid #FFC107;
+  border-radius: 0.375rem;
+  padding: 6px 8px;
+  font-size: 7px;
+  line-height: 1.8;
+  color: white;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.runTooltip span {
+  color: #FFC107;
+}
+
+/* Recent runs table */
+.runTableWrap {
+  overflow-x: auto;
+}
+.runTable {
+  width: 100%;
+  font-size: 7px;
+  color: white;
+  border-collapse: collapse;
+}
+.runTable th {
+  color: #FFC107;
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid #FFC107;
+  white-space: nowrap;
+}
+.runTable td {
+  padding: 10px 6px;
+  border-bottom: 1px solid #222;
+  white-space: nowrap;
+}
+.runFooter {
+  text-align: center;
+  margin-top: 20px;
+}
+.runLink {
+  color: #FFC107 !important;
+  font-size: 7px !important;
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .runTitle {
+    letter-spacing: 10px;
+    padding: 0 10% 3%;
+    font-size: 28px;
+  }
+  .runText,
+  .runTable,
+  .runLink {
+    font-size: 11px !important;
+  }
+  .runTileLabel {
+    font-size: 9px;
+  }
+  .runTileValue {
+    font-size: 16px;
+  }
+  .runPanelTitle {
+    font-size: 13px;
+  }
+  .runFilter,
+  .runSelect {
+    font-size: 10px;
+  }
+  .runTooltip {
+    font-size: 10px;
+  }
+}

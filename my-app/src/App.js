@@ -5,6 +5,7 @@ import Main from './component/main/main';
 import Blog from './component/blog/blog';
 import './App.css';
 import BlogContent from './component/blogContent/BlogContent';
+import Running from './component/running/running';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/main" element ={<Main />} />
           <Route path='/blog' element = {<Blog />} />
            <Route path='/blogContent' element = {<BlogContent />} />
+           <Route path='/running' element = {<Running />} />
         </Routes>
       </HashRouter>
     </React.StrictMode>
