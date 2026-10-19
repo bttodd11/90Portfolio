@@ -40,7 +40,7 @@ const Links = () => {
     setError("");
   };
 
-  if (location.pathname === "/blog") {
+  if (location.pathname === "/blog" || location.pathname === "/running") {
     return (
       <div className="navSection">
         <Nav className="justify-content-center navLinks">
@@ -78,6 +78,9 @@ const Links = () => {
         </Nav.Item>
         <Nav.Item>
           <a className="navLink" href="https://bttodd.myportfolio.com/" target="_blank">Photography</a>
+        </Nav.Item>
+        <Nav.Item>
+          <Link className="navLink" to="/running">Running</Link>
         </Nav.Item>
         <Nav.Item>
           <button

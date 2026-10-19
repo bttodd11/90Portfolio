@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import TypeIt from "typeit-react";
 import "./preloader.css";
 
 const Preloader = () => {
 
-
-
-  useEffect(() => {
-  })
 
   return(
     <div id="preloaderSection">
@@ -24,7 +20,6 @@ const Preloader = () => {
       <p className="regText">&reg; 1991 BRBK Creative Group, INC</p>
       <p className="liscensedText">Licensed Exclusively</p>
       </div>
-      <Outlet />
     </div>
   )
 
