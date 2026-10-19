@@ -1,9 +1,8 @@
 import "./blog.css";
 import React, { useEffect, useState } from "react";
-import BlogContent from '../blogContent/BlogContent';
 import Links from "../nav/nav";
 import { createClient } from 'contentful';
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 let Blogs = () => {
   const [posts, setPosts] = useState([]);
@@ -40,7 +39,6 @@ let Blogs = () => {
   }, []);
 
   const handlePostClick = (post) => {
-    console.log(post)
     navigate(`/blogContent`, {state: post });
   };
 

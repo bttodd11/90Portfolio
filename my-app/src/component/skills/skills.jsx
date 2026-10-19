@@ -42,7 +42,7 @@ let Skills = () => {
       countUpAnim6 = new CountUp('bootstrap', yearNow - bootstrapYear, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
       countUpAnim7 = new CountUp('jest', yearNow - jestYear, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
       countUpAnim8 = new CountUp('spring', yearNow - spring, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
-      countUpAnim9 = new CountUp('springBoot', yearNow - spring, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
+      countUpAnim9 = new CountUp('springBoot', yearNow - springBoot, {enableScrollSpy:true, duration: 2, suffix:" yrs"});
       if (!countUpAnim.error) {
         countUpAnim.start();
         countUpAnim1.start()
