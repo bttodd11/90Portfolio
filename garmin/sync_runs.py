@@ -2,7 +2,7 @@
 
 Uses python-garminconnect (https://github.com/cyberjunky/python-garminconnect).
 Writes a slim JSON file the Running page reads when it isn't pointed at the
-Vercel sync (see README.md):
+daily Vercel sync (see README.md):
 
     my-app/public/data/runs.json
 
@@ -27,7 +27,9 @@ from garminconnect import (
     GarminConnectTooManyRequestsError,
 )
 
-from sync_core import build_payload
+# The fetch logic lives with the Vercel functions so both share one copy.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "my-app" / "api"))
+from _garmin.sync_core import build_payload  # noqa: E402
 
 TOKENSTORE = os.getenv("GARMINTOKENS", "~/.garminconnect")
 OUTPUT = Path(__file__).resolve().parent.parent / "my-app" / "public" / "data" / "runs.json"

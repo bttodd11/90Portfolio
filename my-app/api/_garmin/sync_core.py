@@ -1,5 +1,5 @@
-"""Garmin fetch logic shared by the local script (sync_runs.py) and the
-Vercel functions in api/."""
+"""Garmin fetch logic shared by the Vercel functions (my-app/api) and the
+local script (garmin/sync_runs.py)."""
 
 import sys
 from datetime import date, datetime, timedelta, timezone

@@ -1,8 +1,9 @@
 """Daily sync run by the Vercel cron job (api/sync.py)."""
 
-import store
 from garminconnect import Garmin, GarminConnectAuthenticationError
-from sync_core import build_payload
+
+from . import store
+from .sync_core import build_payload
 
 # Re-pull this many days each run so recent edits/deletions are picked up;
 # anything older is kept from the stored history.

@@ -1,8 +1,8 @@
 """One-time setup: copy your local Garmin tokens (and current runs.json, if
-any) into the Vercel project's Redis so the daily cron can take over.
+any) into the 90-portfolio project's Redis so the daily cron can take over.
 
     cd garmin && vercel env pull .env.local     # gets KV_REST_API_URL/TOKEN
-    garmin/.venv/bin/python garmin/upload_tokens.py
+    cd .. && garmin/.venv/bin/python garmin/upload_tokens.py
 
 Re-run it after logging in again locally with sync_runs.py.
 """
@@ -15,6 +15,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 TOKENS_FILE = Path(os.getenv("GARMINTOKENS", "~/.garminconnect")).expanduser() / "garmin_tokens.json"
 RUNS_FILE = HERE.parent / "my-app" / "public" / "data" / "runs.json"
+sys.path.insert(0, str(HERE.parent / "my-app" / "api"))
 
 
 def load_env_file(path):
@@ -31,7 +32,7 @@ def load_env_file(path):
 
 def main():
     load_env_file(HERE / ".env.local")
-    import store
+    from _garmin import store
 
     if not TOKENS_FILE.exists():
         sys.exit("No tokens at %s. Run garmin/sync_runs.py first to log in." % TOKENS_FILE)
@@ -47,7 +48,7 @@ def main():
             store.set_json(store.RUNS_KEY, payload)
             print("Uploaded %d runs from %s." % (len(payload.get("runs", [])), RUNS_FILE))
     except RuntimeError as err:
-        sys.exit("%s\nAdd Upstash Redis to the Vercel project, then run: cd garmin && vercel env pull .env.local" % err)
+        sys.exit("%s\nAdd Upstash Redis to the 90-portfolio project, then run: cd garmin && vercel env pull .env.local" % err)
 
 
 if __name__ == "__main__":

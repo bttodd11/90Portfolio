@@ -1,4 +1,4 @@
-"""GET /api/sync: called daily by Vercel Cron (see vercel.json).
+"""GET /api/sync: called daily by Vercel Cron (see my-app/vercel.json).
 
 Vercel sends `Authorization: Bearer $CRON_SECRET` with cron requests; anything
 without it is rejected so strangers can't trigger Garmin logins.
@@ -11,9 +11,9 @@ import sys
 import traceback
 from http.server import BaseHTTPRequestHandler
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-import cloud_sync  # noqa: E402
+from _garmin import cloud_sync  # noqa: E402
 
 
 class handler(BaseHTTPRequestHandler):
