@@ -9,7 +9,7 @@ All of it runs in the **90-portfolio** Vercel project, next to the site:
 Vercel Cron (daily) ──▶ my-app/api/sync.py ──▶ Garmin
                                │
                                ▼
-                        Upstash Redis: tokens (private) + runs payload
+                        Redis: tokens (private) + runs payload
                                ▲
 bttodd.io/#/running ──▶ my-app/api/runs.py (CDN-cached for 1h)
                         └─ falls back to my-app/public/data/runs.json
@@ -38,16 +38,22 @@ tokens to `~/.garminconnect`.
 
 ## Vercel setup (90-portfolio project)
 
-1. **Add Redis.** In 90-portfolio, go to *Storage → Create Database → Upstash for Redis*
-   and connect it. This sets `KV_REST_API_URL` and `KV_REST_API_TOKEN`.
+1. **Add Redis.** In 90-portfolio, go to *Storage*, create a Redis database
+   (currently `redis-cinnabar-globe`), and connect it to Production and
+   Preview. This sets `REDIS_URL`. An Upstash store, which sets
+   `KV_REST_API_URL`/`KV_REST_API_TOKEN`, works too.
 2. **`CRON_SECRET`** must be set under *Settings → Environment Variables*
    (Production). It's already there.
-3. **Upload your tokens and current runs:**
+3. **Upload your tokens and current runs.** `REDIS_URL` is a sensitive
+   variable, so `vercel env pull` can't download it. Copy it from the Redis
+   store's page in Vercel into `garmin/.env.local` as one line,
+   `REDIS_URL=redis://...`, then run:
    ```bash
-   cd garmin && vercel link        # pick 90-portfolio
-   vercel env pull .env.local && cd ..
+   garmin/.venv/bin/pip install -r garmin/requirements.txt
    garmin/.venv/bin/python garmin/upload_tokens.py
    ```
+   A later `vercel env pull` overwrites `garmin/.env.local`, so re-add the
+   line if you need to upload again.
 4. **Deploy:** merge this branch into `master`. Vercel builds the site and the
    functions together and registers the cron.
 5. **Run the first sync by hand:**

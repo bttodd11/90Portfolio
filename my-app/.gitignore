@@ -1,3 +1,4 @@
 .vercel
 build
 .vercel_python_packages
+__pycache__/

@@ -48,7 +48,7 @@ def main():
             store.set_json(store.RUNS_KEY, payload)
             print("Uploaded %d runs from %s." % (len(payload.get("runs", [])), RUNS_FILE))
     except RuntimeError as err:
-        sys.exit("%s\nAdd Upstash Redis to the 90-portfolio project, then run: cd garmin && vercel env pull .env.local" % err)
+        sys.exit("%s\nCopy REDIS_URL from Vercel (Storage -> your Redis store) into garmin/.env.local as REDIS_URL=..." % err)
 
 
 if __name__ == "__main__":
