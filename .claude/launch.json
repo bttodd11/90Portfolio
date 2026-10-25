@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "my-app",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "my-app", "start"],
+      "port": 3000
+    },
+    {
+      "name": "my-app-build",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "5050", "--directory", "my-app/build"],
+      "port": 5050
+    }
+  ]
+}

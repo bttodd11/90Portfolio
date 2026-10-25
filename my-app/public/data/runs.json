@@ -1,7 +1,76 @@
 {
-  "updatedAt": "2026-10-19T14:35:59.544668+00:00",
-  "rangeDays": 365,
+  "updatedAt": "2026-10-25T18:39:42.283754+00:00",
   "runs": [
+    {
+      "id": 24848134044,
+      "name": "Hays County Running",
+      "startTimeLocal": "2026-10-25 08:53:48",
+      "distanceMeters": 8859.26953125,
+      "durationSeconds": 3204.950927734375,
+      "movingSeconds": 3196.4520263671875,
+      "elevationGainMeters": 20.0,
+      "averageHR": 129.0,
+      "maxHR": 137.0,
+      "cadence": 157.546875,
+      "calories": 795.0,
+      "vo2Max": 51.0
+    },
+    {
+      "id": 24837083599,
+      "name": "Hays County Running",
+      "startTimeLocal": "2026-10-24 09:26:02",
+      "distanceMeters": 5691.8701171875,
+      "durationSeconds": 1724.0030517578125,
+      "movingSeconds": 1721.3840026855469,
+      "elevationGainMeters": 18.0,
+      "averageHR": 149.0,
+      "maxHR": 175.0,
+      "cadence": 158.4375,
+      "calories": 511.0,
+      "vo2Max": 51.0
+    },
+    {
+      "id": 24829351442,
+      "name": "Treadmill Running",
+      "startTimeLocal": "2026-10-23 14:27:04",
+      "distanceMeters": 4437.0400390625,
+      "durationSeconds": 1326.43505859375,
+      "movingSeconds": 1271.0,
+      "elevationGainMeters": null,
+      "averageHR": 142.0,
+      "maxHR": 157.0,
+      "cadence": 153.921875,
+      "calories": 360.0,
+      "vo2Max": null
+    },
+    {
+      "id": 24797372386,
+      "name": "Austin Running",
+      "startTimeLocal": "2026-10-20 18:31:14",
+      "distanceMeters": 6447.6298828125,
+      "durationSeconds": 1864.177978515625,
+      "movingSeconds": 1860.3710021972656,
+      "elevationGainMeters": 38.0,
+      "averageHR": 157.0,
+      "maxHR": 190.0,
+      "cadence": 158.703125,
+      "calories": 584.0,
+      "vo2Max": 50.0
+    },
+    {
+      "id": 24785030256,
+      "name": "Hays County Running",
+      "startTimeLocal": "2026-10-19 18:20:49",
+      "distanceMeters": 7129.4501953125,
+      "durationSeconds": 2639.322021484375,
+      "movingSeconds": 2628.8400268554688,
+      "elevationGainMeters": 16.0,
+      "averageHR": 131.0,
+      "maxHR": 153.0,
+      "cadence": 157.1875,
+      "calories": 631.0,
+      "vo2Max": 51.0
+    },
     {
       "id": 24746813082,
       "name": "Austin Running",
@@ -2549,62 +2618,6 @@
       "cadence": 157.9375,
       "calories": 719.0,
       "vo2Max": null
-    },
-    {
-      "id": 20787547664,
-      "name": "Treadmill Running",
-      "startTimeLocal": "2025-10-24 15:34:30",
-      "distanceMeters": 8305.650390625,
-      "durationSeconds": 2729.4970703125,
-      "movingSeconds": 2719.0869750976562,
-      "elevationGainMeters": null,
-      "averageHR": 140.0,
-      "maxHR": 147.0,
-      "cadence": 158.09375,
-      "calories": 708.0,
-      "vo2Max": null
-    },
-    {
-      "id": 20787547596,
-      "name": "Treadmill Running",
-      "startTimeLocal": "2025-10-23 15:17:21",
-      "distanceMeters": 8274.3701171875,
-      "durationSeconds": 2688.093017578125,
-      "movingSeconds": 2678.2230224609375,
-      "elevationGainMeters": null,
-      "averageHR": 142.0,
-      "maxHR": 159.0,
-      "cadence": 159.03125,
-      "calories": 714.0,
-      "vo2Max": null
-    },
-    {
-      "id": 20757984447,
-      "name": "Treadmill Running",
-      "startTimeLocal": "2025-10-21 12:43:42",
-      "distanceMeters": 3228.8798828125,
-      "durationSeconds": 1072.3890380859375,
-      "movingSeconds": 1061.0,
-      "elevationGainMeters": null,
-      "averageHR": 130.0,
-      "maxHR": 137.0,
-      "cadence": 155.4375,
-      "calories": 253.0,
-      "vo2Max": null
-    },
-    {
-      "id": 20744608570,
-      "name": "Hays County Running",
-      "startTimeLocal": "2025-10-20 06:33:05",
-      "distanceMeters": 6451.06005859375,
-      "durationSeconds": 2021.905029296875,
-      "movingSeconds": 2015.5920104980469,
-      "elevationGainMeters": 15.0,
-      "averageHR": 149.0,
-      "maxHR": 162.0,
-      "cadence": 159.8125,
-      "calories": 590.0,
-      "vo2Max": 51.0
     }
   ],
   "personalRecords": [
@@ -2668,19 +2681,19 @@
   "racePredictions": [
     {
       "label": "5K",
-      "seconds": 1247
+      "seconds": 1245
     },
     {
       "label": "10K",
-      "seconds": 2703
+      "seconds": 2694
     },
     {
       "label": "Half Marathon",
-      "seconds": 6229
+      "seconds": 6196
     },
     {
       "label": "Marathon",
-      "seconds": 14042
+      "seconds": 13871
     }
   ]
 }

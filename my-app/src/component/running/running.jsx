@@ -2,8 +2,27 @@ import "./running.css";
 import React, { useEffect, useMemo, useState } from "react";
 import Links from "../nav/nav";
 
-// Written by garmin/sync_runs.py (python-garminconnect)
-const RUNS_URL = `${process.env.PUBLIC_URL}/data/runs.json`;
+// Tried in order. In production the daily Vercel sync (my-app/api/runs.py)
+// comes first; the file garmin/sync_runs.py writes is the fallback, so the page
+// still works if the sync isn't set up yet or the API is down.
+const RUNS_URLS = [
+  process.env.REACT_APP_RUNS_URL || (process.env.NODE_ENV === "production" ? "/api/runs" : null),
+  `${process.env.PUBLIC_URL}/data/runs.json`,
+].filter(Boolean);
+
+let fetchRuns = async () => {
+  for (let url of RUNS_URLS) {
+    try {
+      // Revalidate so fresh data shows up without a hard refresh
+      let res = await fetch(url, { cache: "no-cache" });
+      // res.json() also rejects the HTML page served for unknown paths
+      if (res.ok) return await res.json();
+    } catch (err) {
+      // fall through to the next source
+    }
+  }
+  throw new Error("No runs data available");
+}
 const METERS_PER_MILE = 1609.344;
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -190,12 +209,7 @@ let Running = () => {
   let [range, setRange] = useState("year");
 
   useEffect(() => {
-    // Revalidate so a fresh sync shows up right after redeploying
-    fetch(RUNS_URL, { cache: "no-cache" })
-      .then((res) => {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
-      })
+    fetchRuns()
       .then(setData)
       .catch(() => setError(true));
   }, []);

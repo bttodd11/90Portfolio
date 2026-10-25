@@ -3,12 +3,29 @@
 Feeds the **Running** tab (`/#/running`) using
 [python-garminconnect](https://github.com/cyberjunky/python-garminconnect).
 
-The site is a static build on GitHub Pages, so nothing calls Garmin from the
-browser. Instead, `sync_runs.py` runs on your machine and writes
-`my-app/public/data/runs.json`. The Running page reads that file. This keeps
-your Garmin login off the public site.
+All of it runs in the **90-portfolio** Vercel project, next to the site:
 
-## Setup (once)
+```
+Vercel Cron (daily) ──▶ my-app/api/sync.py ──▶ Garmin
+                               │
+                               ▼
+                        Redis: tokens (private) + runs payload
+                               ▲
+bttodd.io/#/running ──▶ my-app/api/runs.py (CDN-cached for 1h)
+                        └─ falls back to my-app/public/data/runs.json
+```
+
+| Path | What it is |
+| --- | --- |
+| `my-app/api/sync.py` | Daily cron job. It requires `CRON_SECRET`, re-pulls the last 30 days, and keeps older history |
+| `my-app/api/runs.py` | Public, read-only data for the page |
+| `my-app/api/_garmin/` | Shared code. The leading underscore keeps it from becoming a route |
+| `my-app/vercel.json` | Cron schedule and function settings |
+| `my-app/requirements.txt`, `.python-version` | Python dependencies and version (3.12) for the functions |
+| `garmin/sync_runs.py` | Local sync that writes `my-app/public/data/runs.json` (the fallback) |
+| `garmin/upload_tokens.py` | One-time upload of your local tokens and runs to Redis |
+
+## Local setup (needed once)
 
 ```bash
 python3 -m venv garmin/.venv
@@ -16,22 +33,53 @@ garmin/.venv/bin/pip install -r garmin/requirements.txt
 garmin/.venv/bin/python garmin/sync_runs.py
 ```
 
-The first run asks for your Garmin email, password, and MFA code (if MFA is
-on). It saves tokens to `~/.garminconnect`; set `GARMINTOKENS` to use a
-different location. Later runs reuse those tokens and don't prompt.
+The first run asks for your Garmin email, password, and MFA code. It saves
+tokens to `~/.garminconnect`.
 
-## Updating the dashboard
+## Vercel setup (90-portfolio project)
 
-```bash
-garmin/.venv/bin/python garmin/sync_runs.py   # or: cd my-app && npm run sync-runs (uses system python3)
-cd my-app && npm run deploy
-```
+1. **Add Redis.** In 90-portfolio, go to *Storage*, create a Redis database
+   (currently `redis-cinnabar-globe`), and connect it to Production and
+   Preview. This sets `REDIS_URL`. An Upstash store, which sets
+   `KV_REST_API_URL`/`KV_REST_API_TOKEN`, works too.
+2. **`CRON_SECRET`** must be set under *Settings → Environment Variables*
+   (Production). It's already there.
+3. **Upload your tokens and current runs.** `REDIS_URL` is a sensitive
+   variable, so `vercel env pull` can't download it. Copy it from the Redis
+   store's page in Vercel into `garmin/.env.local` as one line,
+   `REDIS_URL=redis://...`, then run:
+   ```bash
+   garmin/.venv/bin/pip install -r garmin/requirements.txt
+   garmin/.venv/bin/python garmin/upload_tokens.py
+   ```
+   A later `vercel env pull` overwrites `garmin/.env.local`, so re-add the
+   line if you need to upload again.
+4. **Deploy:** merge this branch into `master`. Vercel builds the site and the
+   functions together and registers the cron.
+5. **Run the first sync by hand:**
+   ```bash
+   curl -H "Authorization: Bearer <CRON_SECRET>" https://www.bttodd.io/api/sync
+   ```
+   You should get back `{"runs": N, "updatedAt": ...}`. Then
+   `https://www.bttodd.io/api/runs` returns the data.
 
-Use `--days 730` to pull a longer history (the default is 365 days).
+The page needs no extra setting. In production it reads `/api/runs` and
+falls back to the bundled `runs.json`. The cron runs daily at 11:00 UTC
+(6 AM Central during daylight time, 5 AM in winter).
+
+## When something breaks
+
+| `/api/sync` returns | Meaning | Fix |
+| --- | --- | --- |
+| `409` "tokens were rejected" / "No Garmin tokens" | Refresh token expired or missing | Run `sync_runs.py` locally to log in, then `upload_tokens.py` |
+| `502` | Garmin error or block (check the project's *Logs*) | If Garmin keeps blocking Vercel, move the job to GitHub Actions |
+| `401` | Missing or wrong `CRON_SECRET` | Check the env var and redeploy |
+
+The page keeps showing the last good data while the sync is broken.
 
 ## What's published
 
 Each run includes its date, name, distance, time, elevation gain, heart rate,
-cadence, calories, and VO2 max. The file also holds personal records and race
-predictions. **No GPS tracks or start coordinates are written**, so the public
-JSON doesn't reveal where your runs start.
+cadence, calories, and VO2 max. The data also includes personal records and
+race predictions. **No GPS tracks or start coordinates are stored.** Garmin
+tokens stay private in Redis and are never returned by `/api/runs`.
