@@ -2,8 +2,9 @@ import "./running.css";
 import React, { useEffect, useMemo, useState } from "react";
 import Links from "../nav/nav";
 
-// Written by garmin/sync_runs.py (python-garminconnect)
-const RUNS_URL = `${process.env.PUBLIC_URL}/data/runs.json`;
+// Synced daily on Vercel (garmin/api/runs.py) when REACT_APP_RUNS_URL is set;
+// otherwise the file garmin/sync_runs.py writes locally.
+const RUNS_URL = process.env.REACT_APP_RUNS_URL || `${process.env.PUBLIC_URL}/data/runs.json`;
 const METERS_PER_MILE = 1609.344;
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
