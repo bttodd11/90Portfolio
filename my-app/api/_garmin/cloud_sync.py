@@ -14,7 +14,7 @@ class TokensMissing(Exception):
     pass
 
 
-def run():
+def run(window_days=WINDOW_DAYS):
     tokens = store.get_raw(store.TOKENS_KEY)
     if not tokens:
         raise TokensMissing("No Garmin tokens in Redis. Run garmin/upload_tokens.py.")
@@ -34,7 +34,7 @@ def run():
     store.set_raw(store.TOKENS_KEY, garmin.client.dumps())
 
     previous = store.get_json(store.RUNS_KEY)
-    payload = build_payload(garmin, WINDOW_DAYS, previous)
+    payload = build_payload(garmin, window_days, previous)
     store.set_json(store.RUNS_KEY, payload)
 
     # Tokens can also be refreshed mid-run on a 401.
