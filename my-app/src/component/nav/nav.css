@@ -8,7 +8,7 @@ a,
 .navLink {
   text-decoration: none;
   color: #FFC107;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 .nav-item {
@@ -23,7 +23,7 @@ a,
   cursor: pointer;
   font: inherit;
   color: #FFC107;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 /* Password modal styles */

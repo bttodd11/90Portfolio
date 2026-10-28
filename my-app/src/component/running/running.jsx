@@ -164,7 +164,7 @@ let TopRuns = ({ runs }) => {
   return (
     <div className="runPanel">
       <div className="runPanelHeader">
-        <h3 className="runPanelTitle">Top 10</h3>
+        <h3 className="runPanelTitle">Top 10 · All Time</h3>
         <select
           className="runSelect"
           value={categoryKey}
@@ -177,7 +177,7 @@ let TopRuns = ({ runs }) => {
         </select>
       </div>
       {entries.length === 0 ? (
-        <p className="runText">No runs with {category.column.toLowerCase()} data in this range.</p>
+        <p className="runText">No runs with {category.column.toLowerCase()} data yet.</p>
       ) : (
         <div className="runTableWrap">
           <table className="runTable">
@@ -297,7 +297,8 @@ let Running = () => {
             )}
           </div>
 
-          <TopRuns runs={runs} />
+          {/* All-time leaderboard: ignores the range filter on purpose */}
+          <TopRuns runs={data.runs} />
 
           <div className="runPanel">
             <h3 className="runPanelTitle">Recent Runs</h3>

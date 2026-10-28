@@ -1,7 +1,8 @@
 """GET /api/runs: the latest runs payload for the Running page.
 
-Public and read-only. Vercel's CDN caches it for an hour, so page views rarely
-reach the function or Redis.
+Public and read-only. Vercel's CDN caches it for 5 minutes: short enough that a
+sync or backfill shows up almost right away, long enough that page views
+rarely reach the function or Redis.
 """
 
 import os
@@ -27,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
         # The data is public anyway, and a fixed value keeps CDN caching simple.
         self.send_header("Access-Control-Allow-Origin", "*")
         if body:
-            self.send_header("Cache-Control", "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400")
+            self.send_header("Cache-Control", "public, max-age=0, s-maxage=300, stale-while-revalidate=60")
         else:
             self.send_header("Cache-Control", "no-store")
         self.end_headers()
