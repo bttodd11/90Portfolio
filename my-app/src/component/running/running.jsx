@@ -1,5 +1,5 @@
 import "./running.css";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Links from "../nav/nav";
 
 // Tried in order. In production the daily Vercel sync (my-app/api/runs.py)
@@ -46,6 +46,14 @@ let formatDate = (local) => {
   if (!local) return "-";
   let [y, m, d] = local.slice(0, 10).split("-");
   return `${MONTHS[Number(m) - 1]} ${Number(d)}, ${y}`;
+}
+
+// "2026-10-25 08:53:48" -> "8:53 AM" (Garmin's local start time, no timezone math)
+let formatTimeOfDay = (local) => {
+  let match = /[ T](\d{2}):(\d{2})/.exec(local || "");
+  if (!match) return null;
+  let h = Number(match[1]);
+  return `${h % 12 || 12}:${match[2]} ${h < 12 ? "AM" : "PM"}`;
 }
 
 // Last 12 calendar months, oldest first, including months with no runs
@@ -149,14 +157,130 @@ const TOP_CATEGORIES = [
     format: (v) => Math.round(v).toLocaleString() },
 ];
 
-let topRuns = (runs, category) =>
+let topRuns = (runs, category, limit = 10) =>
   runs
     .map((run) => ({ run, value: category.value(run) }))
     .filter((entry) => entry.value != null)
     .sort((a, b) => category.order === "asc" ? a.value - b.value : b.value - a.value)
-    .slice(0, 10);
+    .slice(0, limit);
 
-let TopRuns = ({ runs }) => {
+// For each Top 10 category, a Map of run id -> all-time rank (1-based)
+let rankRuns = (runs) =>
+  TOP_CATEGORIES.map((category) => ({
+    category,
+    rankById: new Map(topRuns(runs, category, Infinity).map(({ run }, i) => [run.id, i + 1])),
+  }));
+
+let RunDetail = ({ list, index, ranks, records, onClose, onNavigate }) => {
+  let run = list[index];
+  let closeRef = useRef(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+    let previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, []);
+
+  useEffect(() => {
+    let onKey = (event) => {
+      if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft" && index > 0) onNavigate(index - 1);
+      if (event.key === "ArrowRight" && index < list.length - 1) onNavigate(index + 1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [index, list.length, onClose, onNavigate]);
+
+  let movingPace = run.movingSeconds && run.movingSeconds < run.durationSeconds
+    ? formatPace(run.movingSeconds, run.distanceMeters) : null;
+  let stats = [
+    ["Distance", `${miles(run.distanceMeters).toFixed(2)} mi`],
+    ["Time", formatTime(run.durationSeconds)],
+    ["Avg Pace", formatPace(run.durationSeconds, run.distanceMeters)],
+    ["Moving Time", run.movingSeconds && run.movingSeconds < run.durationSeconds ? formatTime(run.movingSeconds) : null],
+    ["Moving Pace", movingPace],
+    ["Elevation Gain", run.elevationGainMeters ? `${Math.round(run.elevationGainMeters * 3.28084).toLocaleString()} ft` : null],
+    ["Avg HR", run.averageHR ? `${Math.round(run.averageHR)} bpm` : null],
+    ["Max HR", run.maxHR ? `${Math.round(run.maxHR)} bpm` : null],
+    ["Cadence", run.cadence ? `${Math.round(run.cadence)} spm` : null],
+    ["Calories", run.calories ? Math.round(run.calories).toLocaleString() : null],
+    ["VO2 Max", run.vo2Max ? Math.round(run.vo2Max) : null],
+  ].filter(([, value]) => value != null && value !== "-");
+
+  let prs = (records || []).filter((pr) => pr.activityId === run.id);
+  let topFinishes = ranks
+    .map(({ category, rankById }) => ({ category, rank: rankById.get(run.id) }))
+    .filter(({ rank }) => rank && rank <= 10)
+    .sort((a, b) => a.rank - b.rank);
+  let timeOfDay = formatTimeOfDay(run.startTimeLocal);
+
+  return (
+    <div className="runModalOverlay" onClick={onClose}>
+      <div
+        className="runModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="runModalTitle"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="runModalHeader">
+          <div>
+            <h4 className="runModalTitle" id="runModalTitle">{run.name || "Run"}</h4>
+            <p className="runModalDate">{formatDate(run.startTimeLocal)}{timeOfDay ? ` · ${timeOfDay}` : ""}</p>
+          </div>
+          <button type="button" className="runModalClose" onClick={onClose} ref={closeRef} aria-label="Close">×</button>
+        </div>
+
+        {(prs.length > 0 || topFinishes.length > 0) && (
+          <div className="runBadges">
+            {prs.map((pr) => <span className="runBadge runBadgePR" key={pr.typeId}>PR · {pr.label}</span>)}
+            {topFinishes.map(({ category, rank }) => (
+              <span className="runBadge" key={category.key}>#{rank} {category.label}</span>
+            ))}
+          </div>
+        )}
+
+        <div className="runStatGrid">
+          {stats.map(([label, value]) => (
+            <div className="runStat" key={label}>
+              <p className="runStatLabel">{label}</p>
+              <p className="runStatValue">{value}</p>
+            </div>
+          ))}
+        </div>
+
+        {list.length > 1 && (
+          <div className="runModalNav">
+            <button type="button" className="runFilter" onClick={() => onNavigate(index - 1)} disabled={index === 0} aria-label="Previous run">‹ Prev</button>
+            <span className="runModalCount">{index + 1} / {list.length}</span>
+            <button type="button" className="runFilter" onClick={() => onNavigate(index + 1)} disabled={index === list.length - 1} aria-label="Next run">Next ›</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Table row that opens the run's details on click, Enter or Space
+let RunRow = ({ run, onSelect, children }) => (
+  <tr
+    className="runRowClickable"
+    tabIndex={0}
+    aria-label={`View details for ${run.name || "run"} on ${formatDate(run.startTimeLocal)}`}
+    onClick={onSelect}
+    onKeyDown={(event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        onSelect();
+      }
+    }}
+  >
+    {children}
+  </tr>
+);
+
+let TopRuns = ({ runs, onSelect }) => {
   let [categoryKey, setCategoryKey] = useState("fastest");
   let category = TOP_CATEGORIES.find((c) => c.key === categoryKey);
   let entries = useMemo(() => topRuns(runs, category), [runs, category]);
@@ -186,14 +310,14 @@ let TopRuns = ({ runs }) => {
             </thead>
             <tbody>
               {entries.map(({ run, value }, i) => (
-                <tr key={run.id}>
+                <RunRow key={run.id} run={run} onSelect={() => onSelect(entries.map((e) => e.run), i)}>
                   <td className="runRank">{i + 1}</td>
                   <td className="runHighlight">{category.format(value)}</td>
                   <td>{formatDate(run.startTimeLocal)}</td>
                   <td>{run.name}</td>
                   {category.key !== "longest" && <td>{miles(run.distanceMeters).toFixed(2)}</td>}
                   {category.key !== "fastest" && <td>{formatPace(run.durationSeconds, run.distanceMeters)}</td>}
-                </tr>
+                </RunRow>
               ))}
             </tbody>
           </table>
@@ -207,6 +331,8 @@ let Running = () => {
   let [data, setData] = useState(null);
   let [error, setError] = useState(false);
   let [range, setRange] = useState("year");
+  // The list a run was opened from, so Prev/Next walk that same list
+  let [selected, setSelected] = useState(null);
 
   useEffect(() => {
     fetchRuns()
@@ -229,6 +355,14 @@ let Running = () => {
   }, [runs]);
 
   let monthly = useMemo(() => monthlyMiles(data?.runs || []), [data]);
+  let ranks = useMemo(() => rankRuns(data?.runs || []), [data]);
+  let recentRuns = runs.slice(0, 10);
+
+  let openRun = (list, index) => setSelected({ list, index, opener: document.activeElement });
+  let closeRun = () => {
+    selected?.opener?.focus?.();
+    setSelected(null);
+  };
 
   return (
     <div id="runningSection">
@@ -298,7 +432,7 @@ let Running = () => {
           </div>
 
           {/* All-time leaderboard: ignores the range filter on purpose */}
-          <TopRuns runs={data.runs} />
+          <TopRuns runs={data.runs} onSelect={openRun} />
 
           <div className="runPanel">
             <h3 className="runPanelTitle">Recent Runs</h3>
@@ -308,20 +442,31 @@ let Running = () => {
                   <tr><th>Date</th><th>Run</th><th>Miles</th><th>Time</th><th>Pace</th><th>Avg HR</th></tr>
                 </thead>
                 <tbody>
-                  {runs.slice(0, 10).map((run) => (
-                    <tr key={run.id}>
+                  {recentRuns.map((run, i) => (
+                    <RunRow key={run.id} run={run} onSelect={() => openRun(recentRuns, i)}>
                       <td>{formatDate(run.startTimeLocal)}</td>
                       <td>{run.name}</td>
                       <td>{miles(run.distanceMeters).toFixed(2)}</td>
                       <td>{formatTime(run.durationSeconds)}</td>
                       <td>{formatPace(run.durationSeconds, run.distanceMeters)}</td>
                       <td>{run.averageHR ? Math.round(run.averageHR) : "-"}</td>
-                    </tr>
+                    </RunRow>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+
+          {selected && (
+            <RunDetail
+              list={selected.list}
+              index={selected.index}
+              ranks={ranks}
+              records={data.personalRecords}
+              onClose={closeRun}
+              onNavigate={(index) => setSelected((current) => ({ ...current, index }))}
+            />
+          )}
 
           <p className="runText runFooter">
             Synced {new Date(data.updatedAt).toLocaleDateString()} · Powered by <a href="https://github.com/cyberjunky/python-garminconnect" className="runLink">python-garminconnect</a>

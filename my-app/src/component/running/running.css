@@ -199,6 +199,132 @@
   font-size: 7px !important;
 }
 
+/* Clickable run rows */
+.runRowClickable {
+  cursor: pointer;
+}
+.runRowClickable:hover td,
+.runRowClickable:focus-visible td {
+  background: #1a1a1a;
+  color: #FFC107;
+}
+.runRowClickable:focus-visible {
+  outline: 1px solid #FFC107;
+  outline-offset: -1px;
+}
+
+/* Run detail popup */
+.runModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 9999;
+}
+.runModal {
+  background: #111111;
+  color: white;
+  border: 2px solid #FFC107;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.35);
+  padding: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  font-family: "Press Start 2P", cursive;
+}
+.runModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.runModalTitle {
+  color: #FFC107;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+.runModalDate {
+  color: #999;
+  font-size: 8px;
+  margin: 0;
+}
+.runModalClose {
+  background: black;
+  color: #FFC107;
+  border: 1px solid #FFC107;
+  border-radius: 0.375rem;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.runModalClose:hover,
+.runModalClose:focus-visible {
+  background: #FFC107;
+  color: black;
+  outline: none;
+}
+.runBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.runBadge {
+  border: 1px solid #FFC107;
+  border-radius: 999px;
+  color: #FFC107;
+  font-size: 7px;
+  padding: 5px 8px;
+}
+.runBadgePR {
+  background: #FFC107;
+  color: black;
+}
+.runStatGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.runStat {
+  background: white;
+  border-radius: 0.375rem;
+  padding: 10px 8px;
+  text-align: center;
+}
+.runStatLabel {
+  color: #555;
+  font-size: 7px;
+  margin-bottom: 8px;
+}
+.runStatValue {
+  color: black;
+  font-size: 10px;
+  margin: 0;
+}
+.runModalNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.runModalNav .runFilter:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.runModalCount {
+  color: #999;
+  font-size: 8px;
+}
+
 /* Desktop */
 @media (min-width: 992px) {
   .runTitle {
@@ -226,5 +352,20 @@
   }
   .runTooltip {
     font-size: 10px;
+  }
+  .runStatGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .runModalTitle {
+    font-size: 14px;
+  }
+  .runModalDate,
+  .runBadge,
+  .runStatLabel,
+  .runModalCount {
+    font-size: 9px;
+  }
+  .runStatValue {
+    font-size: 13px;
   }
 }
