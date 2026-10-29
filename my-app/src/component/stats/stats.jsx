@@ -77,7 +77,7 @@ let Stats = () => {
         <div className="row statBox">
           <div className="col-md-6 col-sm-12">
             <p className="statText">Repos: <span>{repos}</span></p>
-            <p className="statText">Favorite Language: <span>{language}</span></p>
+            <p className="statText">Most Used Language: <span>{language}</span></p>
           </div>
           <div className="col-md-6 col-sm-12">
             <a href={githubLink}><p className="statText">Github Link</p></a>
